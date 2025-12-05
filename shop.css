@@ -182,6 +182,61 @@ body {
   margin-bottom: 10px;
 }
 
+.filter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.filter-header h3 {
+  margin: 0;
+}
+
+.close-filter-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: #222;
+  display: none; /* hidden on desktop */
+  padding: 4px 8px;
+}
+
+.close-filter-btn:hover {
+  color: #00bfff;
+}
+
+/* Mobile filter toggle button (hidden on desktop, shown on mobile) */
+.mobile-filter-toggle {
+  display: none;
+  padding: 0 20px 15px;
+  text-align: left;
+}
+
+.filter-toggle-btn {
+  background-color: #00bfff;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  text-align: left;
+}
+
+.filter-toggle-btn:hover {
+  background-color: #0099cc;
+}
+
+.filter-toggle-btn i {
+  margin-right: 8px;
+}
+
+
 .filter-section { 
   margin-bottom: 14px;
 }
@@ -253,6 +308,43 @@ body {
 
 /* Mobile devices: single column for everything (under 768px) */
 @media (max-width: 768px) {
+  /* Show mobile filter toggle button */
+  .mobile-filter-toggle {
+    display: block;
+  }
+
+  /* Hide filter sidebar by default on mobile, show it when .active */
+  .filter-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 85vw;
+    max-width: 350px;
+    height: 100vh;
+    border-radius: 0;
+    border: none;
+    z-index: 1999;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.15);
+    padding: 16px;
+  }
+
+  /* Show filter sidebar when active */
+  .filter-sidebar.active {
+    transform: translateX(0);
+  }
+
+  /* Show close button on mobile */
+  .close-filter-btn {
+    display: block;
+  }
+
+  .filter-header h3 {
+    flex: 1;
+  }
+
   /* Header optimization */
   .header {
     flex-wrap: wrap;
@@ -284,14 +376,18 @@ body {
     grid-template-columns: 1fr;
     padding: 12px;
     gap: 15px;
+    position: relative;
   }
-  .filter-sidebar {
-    padding: 12px;
-    margin-bottom: 10px;
+
+  /* Add overlay when filter sidebar is open */
+  .shop-main.filter-open::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 1998;
   }
-  .filter-section {
-    margin-bottom: 10px;
-  }
+
   .filter-section h4 {
     font-size: 13px;
   }

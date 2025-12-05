@@ -1,0 +1,364 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+  
+  <title>Document</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="shop.css">
+</head>
+
+<body>
+
+
+  
+
+ 
+
+
+<!-- SIDE MENU -->
+ 
+<div id="side-menu" class="side-menu">
+  <h3>Menu</h3>
+  <a href="index.html">Home</a>
+  <a href="shop.html">Shop / All Products</a>
+  <a href="shop.html">Categories</a>
+  <a href="#">Cart / Login</a>
+  
+</div>
+  <!-- SIDE MENU -->
+
+
+
+  <div class="container">
+    <header class="header">
+  <nav class="colour">Azmani Store</nav>
+
+  <div class="search-container">
+    <input type="text" class="search-box" placeholder="Search products...">
+    <button class="search-button"><i class="fa fa-search"></i></button>
+  </div>
+
+  <div class="row">
+    <a href="index.html" class="colour" >Home</a>
+    <a href="shop.html" class="colour active">Shop</a>
+    <a href="contact.html" class="colour">Contact</a>
+</div>
+</header>
+<!--head bottom-->
+
+<header class="head-bottom">
+  <div class="menu-auth-row">
+    <!-- All menu button -->
+    <nav class="colour" id="menuIcon"><i class="fa-solid fa-bars"></i> All</nav>
+
+    <!-- Single Login / Signup button -->
+    <button id="authBtn" class="btn">Login / Signup</button>
+  </div>
+</header>
+
+
+
+
+</div>
+
+    
+
+
+
+    <h2 align="center">Shop by Category</h2>
+
+
+
+
+
+<main class="shop-main">
+
+  <aside class="filter-sidebar" id="filterSidebar">
+    <h3>Filters</h3>
+    <form id="filtersForm">
+      <div class="filter-section">
+        <h4>Category</h4>
+        <label><input type="checkbox" name="category" value="tshirt"> T-shirt</label>
+        <label><input type="checkbox" name="category" value="shirt"> Casual Shirt</label>
+        <label><input type="checkbox" name="category" value="jeans"> Jeans</label>
+      </div>
+
+      <div class="filter-section">
+        <h4>Price</h4>
+        <div class="price-range">
+          <input type="number" id="priceMin" name="priceMin" placeholder="$ Min">
+          <span class="dash">—</span>
+          <input type="number" id="priceMax" name="priceMax" placeholder="$ Max">
+        </div>
+      </div>
+
+      <div class="filter-section">
+        <h4>Rating</h4>
+        <label><input type="checkbox" name="rating" value="4"> 4 stars & up</label>
+        <label><input type="checkbox" name="rating" value="3"> 3 stars & up</label>
+      </div>
+
+      <div class="filter-section">
+        <h4>Color</h4>
+        <div class="color-swatches">
+          <label class="swatch"><input type="checkbox" name="color" value="black"><span class="dot black"></span> Black</label>
+          <label class="swatch"><input type="checkbox" name="color" value="white"><span class="dot white"></span> White</label>
+          <label class="swatch"><input type="checkbox" name="color" value="blue"><span class="dot blue"></span> Blue</label>
+        </div>
+      </div>
+
+      <div class="filter-actions">
+        <button type="button" id="applyFilters" class="btn">Apply</button>
+        <button type="button" id="clearFilters" class="btn">Clear</button>
+      </div>
+    </form>
+  </aside>
+
+  <section class="product-column">
+    <div class="product-row">
+
+      <div class="products">
+        <img src="images/buy-1.jpg" alt="T-shirt" class="product-trigger">
+        <h4><a href="#" class="product-trigger">T-shirt</a></h4>
+        <div class="rating">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star-half-stroke"></i>
+        </div>
+        <p>$50.00</p>
+      </div>
+
+      <div class="products">
+        <img src="images/buy-2.jpg" alt="Casual Shirt" class="product-trigger">
+        <h4><a href="#" class="product-trigger">Casual Shirt</a></h4>
+        <div class="rating">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star-half-stroke"></i>
+          <i class="fa-regular fa-star"></i>
+        </div>
+        <p>$45.00</p>
+      </div>
+
+      <div class="products">
+        <img src="images/buy-3.jpg" alt="Jeans" class="product-trigger">
+        <h4><a href="#" class="product-trigger">Jeans</a></h4>
+        <div class="rating">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star-half-stroke"></i>
+          <i class="fa-regular fa-star"></i>
+          <i class="fa-regular fa-star"></i>
+        </div>
+        <p>$60.00</p>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!--foooter-->
+
+
+
+<footer class="footer">
+  <!-- Back to top -->
+  
+
+ 
+      
+
+  <!-- Bottom bar -->
+  <div class="footer-bottom">
+    <p>© 2025 Azmani Store — All Rights Reserved</p>
+  </div>
+</footer>
+
+
+
+
+
+
+
+  </div>
+ <!-- Side menu overlay -->
+<div id="sideMenuOverlay" class="overlay"></div>
+
+<!-- Auth modal overlay -->
+<div id="authModalOverlay" class="overlay"></div>
+<!-- Auth Modal -->
+<div id="authModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    
+    <!-- Tabs -->
+    <div class="tabs">
+      <button id="loginTab" class="tab active">Login</button>
+      <button id="signupTab" class="tab">Signup</button>
+    </div>
+    
+    <!-- Login Form -->
+    <form id="loginForm">
+      <input type="email" placeholder="Email" required>
+      <input type="password" placeholder="Password" required>
+      <button type="submit" class="btn">Login</button>
+    </form>
+    
+    <!-- Signup Form -->
+    <form id="signupForm" style="display:none;">
+      <input type="text" id="signupName" placeholder="Full Name" required>
+      <input type="email" id="signupEmail" placeholder="Email" required>
+      <input type="password" id="signupPassword" placeholder="Password" required>
+
+      <div class="account-type" style="text-align:left;margin:8px 0">
+        <p style="margin:0 0 6px 0;font-weight:600">Account type</p>
+        <label style="display:block; font-size:14px; margin-bottom:4px"><input type="radio" name="accountType" value="seller" required> Seller (Merchant account)</label>
+        <label style="display:block; font-size:14px"><input type="radio" name="accountType" value="customer"> Customer (Shopper)</label>
+      </div>
+
+      <button type="submit" class="btn">Signup</button>
+    </form>
+    
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+<script>
+  (function(){
+    const applyBtn = document.getElementById('applyFilters');
+    const clearBtn = document.getElementById('clearFilters');
+    const form = document.getElementById('filtersForm');
+
+    if (applyBtn) {
+      applyBtn.addEventListener('click', function(){
+        const data = new FormData(form);
+        const entries = {};
+        for (const [k,v] of data.entries()) {
+          if (entries[k]) {
+            if (Array.isArray(entries[k])) entries[k].push(v); else entries[k] = [entries[k], v];
+          } else entries[k] = v;
+        }
+        console.log('Filters (UI only):', entries);
+        alert('Filters applied (UI only)');
+      });
+    }
+
+    if (clearBtn) {
+      clearBtn.addEventListener('click', function(){
+        form.reset();
+      });
+    }
+  })();
+</script>
+<script>
+  // Side menu toggle and auth modal behavior (same as index.html)
+  (function(){
+    const menuIcon = document.getElementById('menuIcon');
+    const sideMenu = document.getElementById('side-menu');
+    const sideMenuOverlay = document.getElementById('sideMenuOverlay');
+
+    if (menuIcon && sideMenu && sideMenuOverlay) {
+      menuIcon.addEventListener('click', (e) => {
+        sideMenu.classList.toggle('active');
+        sideMenuOverlay.classList.toggle('active');
+        e.stopPropagation();
+      });
+
+      sideMenuOverlay.addEventListener('click', () => {
+        sideMenu.classList.remove('active');
+        sideMenuOverlay.classList.remove('active');
+      });
+    }
+
+    const authBtn = document.getElementById('authBtn');
+    const authModal = document.getElementById('authModal');
+    const authModalOverlay = document.getElementById('authModalOverlay');
+    const closeBtn = authModal ? authModal.querySelector('.close') : null;
+
+    const loginTab = document.getElementById('loginTab');
+    const signupTab = document.getElementById('signupTab');
+    const loginForm = document.getElementById('loginForm');
+    const signupForm = document.getElementById('signupForm');
+
+    if (authBtn && authModal && authModalOverlay && closeBtn) {
+      authBtn.addEventListener('click', (e) => {
+        authModal.style.display = 'flex';
+        authModalOverlay.style.display = 'block';
+        e.stopPropagation();
+      });
+
+      closeBtn.addEventListener('click', () => {
+        authModal.style.display = 'none';
+        authModalOverlay.style.display = 'none';
+      });
+
+      authModalOverlay.addEventListener('click', () => {
+        authModal.style.display = 'none';
+        authModalOverlay.style.display = 'none';
+      });
+
+      authModal.querySelector('.modal-content').addEventListener('click', (e) => {
+        e.stopPropagation();
+      });
+
+      if (loginTab && signupTab && loginForm && signupForm) {
+        loginTab.addEventListener('click', () => {
+          loginForm.style.display = 'block';
+          signupForm.style.display = 'none';
+          loginTab.classList.add('active');
+          signupTab.classList.remove('active');
+        });
+        signupTab.addEventListener('click', () => {
+          loginForm.style.display = 'none';
+          signupForm.style.display = 'block';
+          signupTab.classList.add('active');
+          loginTab.classList.remove('active');
+        });
+
+        loginForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          alert('Logged in successfully!');
+          authModal.style.display = 'none';
+          authModalOverlay.style.display = 'none';
+        });
+
+        signupForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          // collect signup values including account type
+          const data = new FormData(signupForm);
+          const name = document.getElementById('signupName')?.value || '';
+          const email = document.getElementById('signupEmail')?.value || '';
+          const acct = data.get('accountType') || 'customer';
+          console.log('Signup submission:', { name, email, accountType: acct });
+          alert(`Signed up successfully as ${acct === 'seller' ? 'Seller' : 'Customer'}${name ? ` — ${name}` : ''}!`);
+          authModal.style.display = 'none';
+          authModalOverlay.style.display = 'none';
+        });
+      }
+    }
+  })();
+</script>
+</body>
+
+</html>

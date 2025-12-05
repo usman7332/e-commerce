@@ -1,0 +1,526 @@
+*{padding: 0%;
+    margin: 0;
+    
+}
+.main-bg {
+    background-image: url("shopping-6125344_1280.png");
+    background-size: contain;   /* shows full image without cropping */
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    width: 100%;
+    padding: 40px 0;
+
+    background-color: #f3f3f3;  /* optional: fills empty space */
+    position: relative; /* create a stacking context for overlay */
+}
+
+/* Lighten the background image with a semi-transparent overlay so text is more readable */
+.main-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.65); /* increase value to make background lighter */
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Ensure main content sits above the overlay */
+.main-bg > * {
+  position: relative;
+  z-index: 1;
+}
+
+.header a {
+    /* Target all <a> tags within the header */
+    text-decoration: none; /* This is the key property to remove the underline */
+    cursor: pointer;
+}
+
+
+.colour{
+    color: white;
+}
+.colour.active {
+  text-decoration: underline;
+  text-underline-offset: 6px;  /* space between text & underline */
+  text-decoration-thickness: 2px;
+}
+/* Header styling */
+.header {
+  background-color: black;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.head-bottom{
+    background-color: #111;
+    
+  padding: 10px 5px;
+    
+}
+.head-bottom>nav{
+    margin-left: 10px;
+}
+
+/* Search bar styling */
+.search-container {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  justify-content: center;
+  max-width: 500px; /* Makes it wider */
+}
+
+.search-box {
+  width: 100%;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 25px 0 0 25px;
+  outline: none;
+  font-size: 16px;
+  background-color: #f1f1f1;
+  transition: all 0.3s ease;
+}
+
+.search-box:focus {
+  background-color: white;
+  box-shadow: 0 0 5px #00bfff;
+}
+
+.search-button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #00bfff;
+  color: white;
+  font-size: 16px;
+  border-radius: 0 25px 25px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+  background-color: #0099cc;
+}
+
+/* Search bar styling */
+
+
+
+
+
+
+.row{
+    display: flex;
+     gap: 30px;
+     
+    
+}
+
+/* Hover effect for header links (top-right) */
+.row a.colour {
+  transition: color 0.18s ease, background-color 0.18s ease;
+}
+.row a.colour:hover {
+  color: #00bfff;
+  text-decoration: none; /* keep links undecorated on hover */
+}
+.innercontainer{
+    display: flex;
+    justify-content: space-between;    /* pushes image to right */
+    align-items: center;               /* vertically centers both */
+    padding: 100px 200px; 
+}
+.hero-img img {
+  width: 250px;
+   border-radius: 10px;
+}
+.btn{
+    border-radius: 5px;
+    border: 1px solid black;
+    color: white;
+    background-color: black;
+    
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+margin-top: 10px;
+  transition: all 180ms ease;
+}
+
+/* Ensure anchor buttons don't show underlines and text is visible */
+a.btn, .btn {
+  text-decoration: none;
+  display: inline-block;
+  color: white;
+}
+
+a.btn:hover, .btn:hover {
+  text-decoration: none;
+}
+
+/* Hero button specific hover (the Shop now button under Latest Trends) */
+.hero-text .btn {
+  background-color: #000; /* ensure base */
+  border-color: #000;
+}
+.hero-text .btn:hover {
+  background-color: #00bfff;
+  color: #fff;
+  border-color: #00bfff;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+.hero-text .btn:focus {
+  outline: 3px solid rgba(0,191,255,0.25);
+  outline-offset: 3px;
+}
+.products {
+  display: inline-block;
+  text-align: center;
+  margin: 10px;
+}
+.products img {
+  display: block;
+  margin: 0 auto;
+}
+.product-row {
+  display: flex;
+  justify-content: center; 
+  gap: 40px;                 
+  flex-wrap: wrap;        
+  margin-top: 30px;
+}
+
+.products {
+  text-align: center;
+  width: 200px;
+}
+
+.products img {
+  width: 100%;
+  border-radius: 10px;
+}
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  /* min-height: 100vh; */
+}
+
+.footer {
+  margin-top: auto;
+  background-color: #000;
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+.footer-top {
+  background-color: #111; /* slightly lighter black for contrast */
+  text-align: center;
+  padding: 15px 0;
+}
+
+.footer-top a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 40px 20px;
+  gap: 40px;
+}
+
+.footer-column {
+  width: 200px;
+}
+
+.footer-column h4 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column ul li {
+  margin: 6px 0;
+}
+
+.footer-column ul li a {
+  color: #aaa;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  border-top: 1px solid #333;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 14px;
+  background-color: #000;
+  color: #999;
+}
+
+
+
+
+/*menu*\
+/* SIDE MENU */
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: -270px;   /* hide fully */
+  width: 250px;
+  height: 100%;
+  background-color: #111;
+  padding: 20px;
+  transition: all 0.3s ease;
+  z-index: 2000;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.side-menu.active {
+  left: 0;        /* slide in */
+}
+
+.side-menu h3 {
+  color: white;
+  margin-bottom: 20px;
+}
+
+.side-menu a {
+  display: block;
+  padding: 10px 0;
+  color: #ddd;
+  text-decoration: none;
+  border-bottom: 1px solid #333;
+}
+
+.side-menu a:hover {
+  color: #fff;
+}
+
+
+
+.overlay.active {
+  display: block;
+}
+
+
+
+/* MODAL BACKGROUND of login nd signup */
+
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  width: 350px;
+  max-width: 90%;
+  text-align: center;
+  position: relative;
+}
+
+/* Close button */
+.modal-content .close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.tab {
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+  background-color: #f1f1f1;
+  font-weight: bold;
+  margin: 0 5px;
+  border-radius: 5px 5px 0 0;
+}
+.tab.active {
+  background-color: #00bfff;
+  color: white;
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  z-index: 1500;
+}
+
+/* Inputs */
+.modal-content input {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+
+/* Horizontal row for All and Login/Signup */
+.menu-auth-row {
+  display: flex;
+  align-items: center; /* vertical center all items */
+  gap: 20px;           /* space between buttons */
+  padding: 10px 20px;
+  background-color: #111;
+}
+
+/* All menu nav styled like button */
+.menu-auth-row .colour {
+  display: flex;
+  align-items: center;     /* vertical center text */
+  justify-content: center; /* horizontal center text */
+  height: 36px;            /* same height as button */
+  padding:  12px;
+  margin-top: 9px;
+  background-color: #00bfff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: normal;     /* removes default spacing */
+  box-sizing: border-box;
+}
+
+/* Login / Signup button */
+.menu-auth-row .btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;          /* same height as nav */
+  padding: 0 12px;
+  border-radius: 5px;
+  border: none;
+  background-color: #00bfff;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* Hover effect */
+.menu-auth-row .btn:hover,
+.menu-auth-row .colour:hover {
+  background-color: #0099cc;
+}
+
+/* --- Start of Media Queries --- */
+
+/* For smaller screens (e.g., tablets and small desktops) */
+@media (max-width: 992px) {
+    /* Adjust padding and center items */
+    .innercontainer {
+        padding: 40px 30px;
+        flex-direction: column; /* Stack hero text and image */
+        text-align: center;
+    }
+    .hero-img {
+        margin-top: 30px; /* Space between text and image */
+    }
+    
+    /* Display products in 2 columns */
+    .product-row {
+        gap: 20px;
+    }
+    .products {
+        width: 45%; /* Two columns with spacing */
+    }
+}
+
+/* For mobile devices */
+@media (max-width: 768px) {
+    /* Header optimization for mobile */
+    .header {
+        flex-wrap: wrap; 
+        padding: 10px 15px;
+        /* Reorder/Hide elements for space */
+    }
+    
+    /* Hide the desktop navigation links */
+    .header .row {
+        display: none; 
+    }
+    
+    /* Ensure the search bar is full width */
+    .search-container {
+        max-width: 100%;
+        order: 3; /* Move search below the logo/title */
+    }
+
+    /* Product Cards in a single column */
+    .products {
+        width: 80%; /* Single column, easy to tap */
+    }
+    .product-row {
+        /* allow for single column stacking */
+        flex-direction: column; 
+        align-items: center;
+    }
+
+    /* Stack footer columns */
+    .footer-links {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .footer-column {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+/* --- End of Media Queries --- */
+
+
+
+

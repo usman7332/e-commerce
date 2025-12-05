@@ -74,14 +74,22 @@
 
     <h2 align="center">Shop by Category</h2>
 
-
-
-
+    <!-- Mobile filter toggle button -->
+    <div class="mobile-filter-toggle">
+      <button id="toggleFilterBtn" class="filter-toggle-btn">
+        <i class="fa-solid fa-sliders"></i> Category
+      </button>
+    </div>
 
 <main class="shop-main">
 
   <aside class="filter-sidebar" id="filterSidebar">
-    <h3>Filters</h3>
+    <div class="filter-header">
+      <h3>Filters</h3>
+      <button id="closeFilterBtn" class="close-filter-btn" title="Close">
+        <i class="fa-solid fa-times"></i>
+      </button>
+    </div>
     <form id="filtersForm">
       <div class="filter-section">
         <h4>Category</h4>
@@ -249,6 +257,39 @@
     const applyBtn = document.getElementById('applyFilters');
     const clearBtn = document.getElementById('clearFilters');
     const form = document.getElementById('filtersForm');
+    const toggleFilterBtn = document.getElementById('toggleFilterBtn');
+    const closeFilterBtn = document.getElementById('closeFilterBtn');
+    const filterSidebar = document.getElementById('filterSidebar');
+    const shopMain = document.querySelector('.shop-main');
+
+    // Toggle filter sidebar on mobile
+    if (toggleFilterBtn && filterSidebar) {
+      toggleFilterBtn.addEventListener('click', () => {
+        filterSidebar.classList.toggle('active');
+        shopMain.classList.toggle('filter-open');
+        toggleFilterBtn.textContent = filterSidebar.classList.contains('active') ? '✕ Hide Filters' : '☰ Show Filters';
+      });
+    }
+
+    // Close filter sidebar
+    if (closeFilterBtn && filterSidebar) {
+      closeFilterBtn.addEventListener('click', () => {
+        filterSidebar.classList.remove('active');
+        shopMain.classList.remove('filter-open');
+        if (toggleFilterBtn) toggleFilterBtn.textContent = '☰ Show Filters';
+      });
+    }
+
+    // Close sidebar when clicking overlay
+    if (shopMain) {
+      shopMain.addEventListener('click', (e) => {
+        if (e.target === shopMain && filterSidebar.classList.contains('active')) {
+          filterSidebar.classList.remove('active');
+          shopMain.classList.remove('filter-open');
+          if (toggleFilterBtn) toggleFilterBtn.textContent = '☰ Show Filters';
+        }
+      });
+    }
 
     if (applyBtn) {
       applyBtn.addEventListener('click', function(){

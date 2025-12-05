@@ -335,10 +335,27 @@
       const email = document.getElementById('signupEmail')?.value || '';
       const acct = data.get('accountType') || 'customer';
       console.log('Signup submission:', { name, email, accountType: acct });
-      alert(`Signed up successfully as ${acct === 'seller' ? 'Seller' : 'Customer'}${name ? ` — ${name}` : ''}!`);
+      
+      // Close modal first
       authModal.style.display = 'none';
       authModalOverlay.style.display = 'none';
+      
+      // Redirect based on account type
+      if (acct === 'seller') {
+        // Redirect to seller dashboard
+        setTimeout(() => {
+          window.location.href = 'seller-dashboard.html';
+        }, 500); // small delay so alert is visible
+        alert(`Welcome Seller, ${name}! Redirecting to your dashboard...`);
+      } else {
+        // Redirect to shop for customers
+        alert(`Welcome, ${name}! Enjoy shopping!`);
+        setTimeout(() => {
+          window.location.href = 'shop.html';
+        }, 500);
+      }
     });
+
 
 
 

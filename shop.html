@@ -29,7 +29,7 @@
   <a href="index.html">Home</a>
   <a href="shop.html">Shop / All Products</a>
   <a href="shop.html">Categories</a>
-  <a href="#">Cart / Login</a>
+  <a href="product.html?openCart=true">Cart / Login</a>
   
 </div>
   <!-- SIDE MENU -->
@@ -48,7 +48,7 @@
   <div class="row">
     <a href="index.html" class="colour" >Home</a>
     <a href="shop.html" class="colour active">Shop</a>
-    <a href="contact.html" class="colour">Contact</a>
+    <a href="product.html?openCart=true" class="colour cart-link" title="Shopping Cart"><i class="fas fa-shopping-cart"></i></a>
 </div>
 </header>
 <!--head bottom-->
@@ -63,23 +63,90 @@
   </div>
 </header>
 
-
-
-
-</div>
-
-    
-
-
-
-    <h2 align="center">Shop by Category</h2>
-
     <!-- Mobile filter toggle button -->
     <div class="mobile-filter-toggle">
       <button id="toggleFilterBtn" class="filter-toggle-btn">
         <i class="fa-solid fa-sliders"></i> Category
       </button>
     </div>
+
+<!-- FEATURED PRODUCTS SECTION -->
+<section class="featured-products">
+  <h2 class="section-title">Featured Products</h2>
+  <div class="products-grid">
+    <div class="product-card">
+      <div class="product-image">
+        <img src="images/buy-1.jpg" alt="Premium Shirt">
+        <span class="product-badge">-35%</span>
+      </div>
+      <div class="product-info">
+        <p class="product-category">Best Seller</p>
+        <h3 class="product-name">Premium Shirt</h3>
+        <div class="product-rating">
+          <span class="stars">★★★★★</span>
+          <span class="rating-count">(542)</span>
+        </div>
+        <div class="product-price">
+          <span class="price-current">Rs. 5,500.00</span>
+          <span class="price-original">Rs. 8,500.00</span>
+          <span class="discount-percent">Save 35%</span>
+        </div>
+        <div class="product-actions">
+          <button class="btn-add-cart">Add to Cart</button>
+          <button class="btn-view-details">Details</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-image">
+        <img src="images/buy-2.jpg" alt="Classic Denim">
+        <span class="product-badge">NEW</span>
+      </div>
+      <div class="product-info">
+        <p class="product-category">Latest</p>
+        <h3 class="product-name">Classic Denim</h3>
+        <div class="product-rating">
+          <span class="stars">★★★★☆</span>
+          <span class="rating-count">(189)</span>
+        </div>
+        <div class="product-price">
+          <span class="price-current">Rs. 6,200.00</span>
+          <span class="price-original">Rs. 7,800.00</span>
+          <span class="discount-percent">Save 20%</span>
+        </div>
+        <div class="product-actions">
+          <button class="btn-add-cart">Add to Cart</button>
+          <button class="btn-view-details">Details</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-image">
+        <img src="images/buy-3.jpg" alt="Casual Wear">
+        <span class="product-badge">HOT</span>
+      </div>
+      <div class="product-info">
+        <p class="product-category">Trending</p>
+        <h3 class="product-name">Casual Wear</h3>
+        <div class="product-rating">
+          <span class="stars">★★★★★</span>
+          <span class="rating-count">(412)</span>
+        </div>
+        <div class="product-price">
+          <span class="price-current">Rs. 4,800.00</span>
+          <span class="price-original">Rs. 6,500.00</span>
+          <span class="discount-percent">Save 26%</span>
+        </div>
+        <div class="product-actions">
+          <button class="btn-add-cart">Add to Cart</button>
+          <button class="btn-view-details">Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <main class="shop-main">
 
@@ -130,45 +197,78 @@
   </aside>
 
   <section class="product-column">
-    <div class="product-row">
+    <div class="products-grid">
 
-      <div class="products">
-        <img src="images/buy-1.jpg" alt="T-shirt" class="product-trigger">
-        <h4><a href="#" class="product-trigger">T-shirt</a></h4>
-        <div class="rating">
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star-half-stroke"></i>
+      <div class="product-card" data-product-id="tshirt">
+        <div class="product-image">
+          <img src="images/buy-1.jpg" alt="T-shirt">
+          <span class="product-badge">-20%</span>
         </div>
-        <p>$50.00</p>
+        <div class="product-info">
+          <p class="product-category">Clothing</p>
+          <h3 class="product-name">T-shirt</h3>
+          <div class="product-rating">
+            <span class="stars">★★★★☆</span>
+            <span class="rating-count">(124)</span>
+          </div>
+          <div class="product-price">
+            <span class="price-current">Rs. 9,950.00</span>
+            <span class="price-original">Rs. 12,450.00</span>
+            <span class="discount-percent">Save 20%</span>
+          </div>
+          <div class="product-actions">
+            <button class="btn-add-cart">Add to Cart</button>
+            <button class="btn-view-details">Details</button>
+          </div>
+        </div>
       </div>
 
-      <div class="products">
-        <img src="images/buy-2.jpg" alt="Casual Shirt" class="product-trigger">
-        <h4><a href="#" class="product-trigger">Casual Shirt</a></h4>
-        <div class="rating">
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star-half-stroke"></i>
-          <i class="fa-regular fa-star"></i>
+      <div class="product-card" data-product-id="casual-shirt">
+        <div class="product-image">
+          <img src="images/buy-2.jpg" alt="Casual Shirt">
+          <span class="product-badge">-15%</span>
         </div>
-        <p>$45.00</p>
+        <div class="product-info">
+          <p class="product-category">Clothing</p>
+          <h3 class="product-name">Casual Shirt</h3>
+          <div class="product-rating">
+            <span class="stars">★★★☆☆</span>
+            <span class="rating-count">(98)</span>
+          </div>
+          <div class="product-price">
+            <span class="price-current">Rs. 8,500.00</span>
+            <span class="price-original">Rs. 10,000.00</span>
+            <span class="discount-percent">Save 15%</span>
+          </div>
+          <div class="product-actions">
+            <button class="btn-add-cart">Add to Cart</button>
+            <button class="btn-view-details">Details</button>
+          </div>
+        </div>
       </div>
 
-      <div class="products">
-        <img src="images/buy-3.jpg" alt="Jeans" class="product-trigger">
-        <h4><a href="#" class="product-trigger">Jeans</a></h4>
-        <div class="rating">
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star-half-stroke"></i>
-          <i class="fa-regular fa-star"></i>
-          <i class="fa-regular fa-star"></i>
+      <div class="product-card" data-product-id="jeans">
+        <div class="product-image">
+          <img src="images/buy-3.jpg" alt="Jeans">
+          <span class="product-badge">-25%</span>
         </div>
-        <p>$60.00</p>
+        <div class="product-info">
+          <p class="product-category">Clothing</p>
+          <h3 class="product-name">Jeans</h3>
+          <div class="product-rating">
+            <span class="stars">★★★★★</span>
+            <span class="rating-count">(267)</span>
+          </div>
+          <div class="product-price">
+            <span class="price-current">Rs. 7,500.00</span>
+            <span class="price-original">Rs. 10,000.00</span>
+            <span class="discount-percent">Save 25%</span>
+          </div>
+          <div class="product-actions">
+            <button class="btn-add-cart">Add to Cart</button>
+            <button class="btn-view-details">Details</button>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -192,12 +292,6 @@
     <p>© 2025 Azmani Store — All Rights Reserved</p>
   </div>
 </footer>
-
-
-
-
-
-
 
   </div>
  <!-- Side menu overlay -->
@@ -301,7 +395,6 @@
           } else entries[k] = v;
         }
         console.log('Filters (UI only):', entries);
-        alert('Filters applied (UI only)');
       });
     }
 
@@ -379,7 +472,6 @@
 
         loginForm.addEventListener('submit', (e) => {
           e.preventDefault();
-          alert('Logged in successfully!');
           authModal.style.display = 'none';
           authModalOverlay.style.display = 'none';
         });
@@ -392,14 +484,213 @@
           const email = document.getElementById('signupEmail')?.value || '';
           const acct = data.get('accountType') || 'customer';
           console.log('Signup submission:', { name, email, accountType: acct });
-          alert(`Signed up successfully as ${acct === 'seller' ? 'Seller' : 'Customer'}${name ? ` — ${name}` : ''}!`);
+          
+          // Close modal first
           authModal.style.display = 'none';
           authModalOverlay.style.display = 'none';
+          
+          // Redirect based on account type
+          if (acct === 'seller') {
+            // Redirect to seller dashboard
+            setTimeout(() => {
+              window.location.href = 'seller-dashboard.html';
+            }, 500);
+          }
         });
       }
     }
   })();
+
+  // Product navigation - click on product to open product page with product ID
+  (function(){
+    document.querySelectorAll('.products').forEach(prod => {
+      prod.addEventListener('click', function(e){
+        if(e.target.closest('a')) return; // Skip if clicking on anchor
+        const productId = this.getAttribute('data-product-id');
+        if(productId){
+          window.location.href = 'product.html?product=' + productId;
+        }
+      });
+    });
+  })();
+
+  // Filter functionality
+  (function(){
+    const products = [
+      { id: 'tshirt', category: 'tshirt', price: 9950, rating: 4.5 },
+      { id: 'casual-shirt', category: 'shirt', price: 8500, rating: 3.5 },
+      { id: 'jeans', category: 'jeans', price: 7500, rating: 3 }
+    ];
+
+    const filtersForm = document.getElementById('filtersForm');
+    const applyFiltersBtn = document.getElementById('applyFilters');
+    const clearFiltersBtn = document.getElementById('clearFilters');
+    const productElements = document.querySelectorAll('.product-card');
+
+    function filterProducts() {
+      // Get selected filter values
+      const selectedCategories = Array.from(document.querySelectorAll('input[name="category"]:checked')).map(el => el.value);
+      const priceMin = parseInt(document.getElementById('priceMin').value) || 0;
+      const priceMax = parseInt(document.getElementById('priceMax').value) || Infinity;
+      const selectedRatings = Array.from(document.querySelectorAll('input[name="rating"]:checked')).map(el => parseInt(el.value));
+      const selectedColors = Array.from(document.querySelectorAll('input[name="color"]:checked')).map(el => el.value);
+
+      // Filter products
+      productElements.forEach(el => {
+        const productId = el.getAttribute('data-product-id');
+        const product = products.find(p => p.id === productId);
+
+        if (!product) return;
+
+        let show = true;
+
+        // Category filter
+        if (selectedCategories.length > 0 && !selectedCategories.includes(product.category)) {
+          show = false;
+        }
+
+        // Price filter
+        if (product.price < priceMin || product.price > priceMax) {
+          show = false;
+        }
+
+        // Rating filter
+        if (selectedRatings.length > 0) {
+          const productRating = product.rating;
+          const meetsRating = selectedRatings.some(minRating => productRating >= minRating);
+          if (!meetsRating) {
+            show = false;
+          }
+        }
+
+        // Display product or hide
+        el.style.display = show ? 'block' : 'none';
+      });
+    }
+
+    // Apply filters on button click
+    applyFiltersBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      filterProducts();
+    });
+
+    // Clear all filters
+    clearFiltersBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      // Uncheck all checkboxes
+      document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+        checkbox.checked = false;
+      });
+      // Clear price inputs
+      document.getElementById('priceMin').value = '';
+      document.getElementById('priceMax').value = '';
+      // Show all products
+      productElements.forEach(el => {
+        el.style.display = 'block';
+      });
+    });
+
+    // Optional: Filter on change (real-time filtering)
+    document.querySelectorAll('input[type="checkbox"], input[type="number"]').forEach(input => {
+      input.addEventListener('change', filterProducts);
+    });
+  })();
+
+  // Add-to-cart and view-details functionality
+  document.querySelectorAll('.btn-add-cart').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      // simple feedback — you can replace this with cart logic (localStorage, API)
+      const original = this.textContent;
+      this.textContent = 'Added ✓';
+      this.disabled = true;
+      setTimeout(() => {
+        this.textContent = original;
+        this.disabled = false;
+      }, 1200);
+    });
+  });
+
+  // Make Details button behave like other product tiles: navigate to product.html with image/title/price
+  document.querySelectorAll('.btn-view-details').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      const card = this.closest('.product-card');
+      if (!card) return;
+      const imgEl = card.querySelector('.product-image img');
+      const titleEl = card.querySelector('.product-name');
+      const priceEl = card.querySelector('.price-current') || card.querySelector('.product-price');
+      const img = imgEl ? imgEl.getAttribute('src') : '';
+      // Prefer explicit data-name attribute (so we can map names to images), then product-name text, then derive from filename
+      let title = '';
+      if (card.dataset && card.dataset.name) {
+        title = card.dataset.name;
+      } else if (titleEl && titleEl.textContent.trim()) {
+        title = titleEl.textContent.trim();
+      } else if (img) {
+        // derive from filename: images/buy-1.jpg -> buy-1
+        try {
+          const parts = img.split('/');
+          const filename = parts[parts.length - 1] || img;
+          title = filename.replace(/\.[^.]+$/, '');
+        } catch (err) {
+          title = img;
+        }
+      }
+      const price = priceEl ? priceEl.textContent.trim() : '';
+      const url = 'product.html?img=' + encodeURIComponent(img) + '&title=' + encodeURIComponent(title) + '&price=' + encodeURIComponent(price);
+      window.location.href = url;
+    });
+  });
 </script>
+
+<!-- Active Navigation Link Script -->
+<script>
+  (function() {
+    function setActiveNav() {
+      // Get current page filename
+      const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+      
+      // Remove active class from all nav links
+      document.querySelectorAll('.row a.colour').forEach(link => {
+        link.classList.remove('active');
+      });
+      
+      // Add active class to current page link with animation
+      document.querySelectorAll('.row a.colour').forEach(link => {
+        const href = link.getAttribute('href');
+        // Check if current page matches the link
+        if (currentPage.includes(href.replace('.html', '')) || 
+            (currentPage === 'index.html' && href === 'index.html') ||
+            (currentPage === '' && href === 'index.html')) {
+          // Trigger reflow to restart animation
+          link.classList.remove('active');
+          void link.offsetWidth; // Trigger reflow
+          link.classList.add('active');
+        }
+      });
+    }
+    
+    // Set active nav on page load
+    setActiveNav();
+    
+    // Also listen for popstate events (browser back/forward)
+    window.addEventListener('popstate', setActiveNav);
+    
+    // Add smooth transition when clicking links
+    document.querySelectorAll('.row a.colour').forEach(link => {
+      link.addEventListener('click', function(e) {
+        // Remove active from all
+        document.querySelectorAll('.row a.colour').forEach(l => {
+          l.classList.remove('active');
+        });
+        // Add to clicked link
+        this.classList.add('active');
+      });
+    });
+  })();
+</script>
+
 </body>
 
 </html>

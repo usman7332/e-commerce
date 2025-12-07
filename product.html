@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page</title>
+    <link rel="stylesheet" href="product.css">
+</head>
+<body>
+
+<div class="top-header">
+    FREE SHIPPING ON ORDERS ABOVE RS. 2500
+</div>
+
+<div class="container">
+
+    <!-- LEFT SIDE = IMAGE GALLERY -->
+    <div class="left">
+        <div class="main-img">
+            <img id="mainImage" src="t-shirt-9675272_1280.jpg" alt="">
+        </div>
+    </div>
+
+    <!-- RIGHT SIDE = PRODUCT INFO -->
+    <div class="right">
+
+        <h1>T-Shirt</h1>
+        <p class="price">Rs. 9,950.00</p>
+
+        <!-- COLORS -->
+        <div class="colors">
+            <span>Colors:</span>
+            <div class="color-box" style="background:#b8ac95;"></div>
+            <div class="color-box" style="background:#3b3632;"></div>
+        </div>
+
+        <!-- SIZE -->
+        <p class="small-title">Size</p>
+        <div class="sizes">
+            <button>40</button>
+            <button>41</button>
+            <button>42</button>
+            <button>43</button>
+            <button>44</button>
+            <button>45</button>
+            <button>46</button>
+        </div>
+
+        <!-- QUANTITY -->
+        <p class="small-title">Quantity</p>
+        <div class="qty-box">
+            <button onclick="decreaseQty()">−</button>
+            <span id="qty">1</span>
+            <button onclick="increaseQty()">+</button>
+        </div>
+
+        <!-- ADD TO CART -->
+        <button class="add-cart">ADD TO CART</button>
+        <button class="buy-now">BUY IT NOW</button>
+
+        <h3>Description</h3>
+        <p class="desc">
+            100% genuine leather comfort moccasin with trendy slip-on style,
+            soft leather insole, and anti-slip TPR outsole.
+        </p>
+
+    </div>
+
+</div>
+<!-- SIDE CART DRAWER -->
+<div id="cartDrawer" class="cart-drawer">
+
+    <div class="cart-header">
+        <h2>Your Cart</h2>
+        <button class="close-btn" onclick="closeCart()">×</button>
+    </div>
+
+    <div class="cart-scroll-wrapper">
+        <button class="cart-scroll-btn up" onclick="cartScrollUp()">▲</button>
+        
+        <div id="cartItems" class="cart-items-scroll"></div>
+
+        <div class="cart-slider">
+            <p style="margin:0 0 8px 0;font-size:12px;color:#666">Recommended</p>
+            <div class="slider-container">
+                <button class="slider-btn prev" onclick="sliderPrev()">‹</button>
+                <div class="slider-items">
+                    <div class="slider-item" onclick="addRecommendedToCart('Casual Shirt', 'images/buy-2.jpg', 8500)">
+                        <img src="images/buy-2.jpg" alt="Product 1">
+                        <p>Casual Shirt</p>
+                        <span style="font-size:10px;color:#666">Click to add</span>
+                    </div>
+                    <div class="slider-item" onclick="addRecommendedToCart('Jeans', 'images/buy-3.jpg', 7500)">
+                        <img src="images/buy-3.jpg" alt="Product 2">
+                        <p>Jeans</p>
+                        <span style="font-size:10px;color:#666">Click to add</span>
+                    </div>
+                </div>
+                <button class="slider-btn next" onclick="sliderNext()">›</button>
+            </div>
+            <div class="slider-vertical-btns">
+                <button class="slider-btn-vertical" onclick="sliderUp()" title="Scroll up">▲</button>
+                <button class="slider-btn-vertical" onclick="sliderDown()" title="Scroll down">▼</button>
+            </div>
+        </div>
+        
+        <button class="cart-scroll-btn down" onclick="cartScrollDown()">▼</button>
+    </div>
+
+    <div class="cart-footer">
+        <h3>Subtotal: Rs <span id="subtotal">0</span></h3>
+        <button class="checkout-btn">Checkout</button>
+    </div>
+
+</div>
+
+<div id="overlay" class="overlay" onclick="closeCart()"></div>
+
+
+<script src="product.js"></script>
+<!-- --- FOOTER --- -->
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <h4>ABOUT</h4>
+                <ul>
+                    <li>ABOUT US</li>
+                    <li>CAREERS</li>
+                    <li>FAQs</li>
+                    <li>RETURNS / EXCHANGES</li>
+                    <li>CONTACT US</li>
+                    <li>PRIVACY POLICY</li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>SIGN UP</h4>
+                <p>Sign up and save</p>
+                <form class="newsletter" onsubmit="return false">
+                    <input type="email" placeholder="Enter your email" aria-label="Email">
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+
+            <div class="footer-col">
+                <h4>FOLLOW US</h4>
+                <div class="social-list">
+                    <a href="#" class="social-link" aria-label="Instagram">
+                        <!-- Instagram icon -->
+                        <svg class="social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" fill="none" stroke-width="1.5"></rect>
+                            <circle cx="12" cy="12" r="3" stroke="currentColor" fill="none" stroke-width="1.5"></circle>
+                            <circle cx="18" cy="6" r="0.75" fill="currentColor"></circle>
+                        </svg>
+                        <span class="social-text">Instagram</span>
+                    </a>
+
+                    <a href="#" class="social-link" aria-label="Facebook">
+                        <!-- Facebook icon -->
+                        <svg class="social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M15 3h3v4h-3v14h-4V7H9V3h3V1.5C12 0.67 12.67 0 13.5 0H16v3z" fill="currentColor"></path>
+                        </svg>
+                        <span class="social-text">Facebook</span>
+                    </a>
+
+                    <a href="#" class="social-link" aria-label="YouTube">
+                        <!-- YouTube icon -->
+                        <svg class="social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <rect x="2" y="6" width="20" height="12" rx="3" stroke="currentColor" fill="none" stroke-width="1.2"></rect>
+                            <polygon points="10,9 16,12 10,15" fill="currentColor"></polygon>
+                        </svg>
+                        <span class="social-text">YouTube</span>
+                    </a>
+                </div>
+            </div>
+
+                <div class="footer-col">
+                    <h4>CUSTOMER SERVICE</h4>
+                    <p>Email | Whatsapp</p>
+                    <p>Contact us at <strong>0311-1115262</strong></p>
+                    <p>09:00 AM to 09:00 PM (PST)</p>
+                    <p>Monday - Saturday</p>
+                </div>
+        </div>
+
+        <div class="store-location">
+            <h4>STORE LOCATION</h4>
+            <p>Find our stores and showrooms across the country.</p>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+            <p>&copy; <span id="year"></span> e-store. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+
+</body>
+</html>

@@ -27,7 +27,7 @@
     <a href="index.html">Home</a>
     <a href="shop.html">Shop / All Products</a>
     <a href="shop.html">Categories</a>
-    <a href="#">Cart / Login</a>
+    <a href="product.html?openCart=true">Cart / Login</a>
 
   </div>
   <!-- SIDE MENU -->
@@ -41,12 +41,13 @@
       <div class="search-container">
         <input type="text" class="search-box" placeholder="Search products...">
         <button class="search-button"><i class="fa fa-search"></i></button>
+        <button id="authBtn" class="btn" style="margin-left: 15px; white-space: nowrap;">Login / Signup</button>
       </div>
 
       <div class="row">
         <a href="index.html" class="colour active">Home</a>
         <a href="shop.html" class="colour">Shop</a>
-        <a href="contact.html" class="colour">Contact</a>
+        <a href="product.html?openCart=true" class="colour cart-link" title="Shopping Cart"><i class="fas fa-shopping-cart"></i></a>
       </div>
     </header>
     <!--head bottom-->
@@ -55,9 +56,6 @@
       <div class="menu-auth-row">
         <!-- All menu button -->
         <nav class="colour" id="menuIcon"><i class="fa-solid fa-bars"></i> All</nav>
-
-        <!-- Single Login / Signup button -->
-        <button id="authBtn" class="btn">Login / Signup</button>
       </div>
     </header>
 
@@ -67,69 +65,321 @@
   </div>
   
 
-    <div class="innercontainer">
-
-
-      <div class="hero-text">
-        <h1>Shop the <br>Latest Trends</h1>
-        <p>Discover new arrivals to refresh <br>your wardrobe.</p>
-        <a href="shop.html" class="btn">Shop now</a>
+    <!-- BANNER CAROUSEL -->
+    <div class="carousel">
+      <div class="carousel-slide active" style="background-image: url('images/buy-1.jpg'); background-size: cover; background-position: center;">
+        <div class="carousel-slide-content">
+          <div class="carousel-text">
+            <div class="discount-badge">SAVE UP TO 50%</div>
+            <h1>Summer Collection 2024</h1>
+            <p>Discover the latest trending products and exclusive deals on premium items. Limited time offer!</p>
+            <button class="btn-shop-now">Shop Now →</button>
+          </div>
+        </div>
       </div>
 
+      <div class="carousel-slide" style="background-image: url('images/buy-2.jpg'); background-size: cover; background-position: center;">
+        <div class="carousel-slide-content">
+          <div class="carousel-text">
+            <div class="discount-badge">FLASH DEAL</div>
+            <h1>Electronics Mega Sale</h1>
+            <p>Get unbeatable prices on smartphones, laptops, and accessories. Don't miss out!</p>
+            <button class="btn-shop-now">Explore Deals →</button>
+          </div>
+        </div>
+      </div>
 
-      <div class="hero-img">
-        <img src="shopping-6125344_1280.png" alt="Modern Chair">
+      <div class="carousel-slide" style="background-image: url('images/buy-3.jpg'); background-size: cover; background-position: center;">
+        <div class="carousel-slide-content">
+          <div class="carousel-text">
+            <div class="discount-badge">NEW ARRIVALS</div>
+            <h1>Fashion Forward</h1>
+            <p>Check out our latest fashion collection with styles for every occasion.</p>
+            <button class="btn-shop-now">View Collection →</button>
+          </div>
+        </div>
+      </div>
+
+      <button class="carousel-arrow prev" onclick="changeSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+      <button class="carousel-arrow next" onclick="changeSlide(1)"><i class="fas fa-chevron-right"></i></button>
+
+      <div class="carousel-controls">
+        <div class="carousel-dot active" onclick="goToSlide(0)"></div>
+        <div class="carousel-dot" onclick="goToSlide(1)"></div>
+        <div class="carousel-dot" onclick="goToSlide(2)"></div>
       </div>
     </div>
 
-    <h2 align="center">Shop by Category</h2>
-
-
-
-
-
-    <div class="product-row">
-
-      <div class="products">
-        <img src="images/buy-1.jpg" alt="T-shirt" class="product-trigger">
-        <h4><a href="#" class="product-trigger">T-shirt</a></h4>
-        <div class="rating">
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star-half-stroke"></i>
+    <!-- FEATURED PRODUCTS (copied from ex.html) -->
+    <section class="featured-products">
+      <h2 class="section-title">Featured Products</h2>
+      <div class="products-grid">
+        <div class="product-card" data-name="Wireless Headphones Pro">
+          <div class="product-image">
+            <img src="product_images/headphones-8210087_1280.jpg" alt="Wireless Headphones Pro">
+            <span class="product-badge">-25%</span>
+          </div>
+          <div class="product-info">
+            <p class="product-category">Electronics</p>
+            <h3 class="product-name">Wireless Headphones Pro</h3>
+            <div class="product-rating">
+              <span class="stars">★★★★★</span>
+              <span class="rating-count">(248)</span>
+            </div>
+            <div class="product-price">
+              <span class="price-current">$149.99</span>
+              <span class="price-original">$199.99</span>
+              <span class="discount-percent">Save 25%</span>
+            </div>
+            <div class="product-actions">
+              <button class="btn-add-cart">Add to Cart</button>
+              <button class="btn-view-details">Details</button>
+            </div>
+          </div>
         </div>
-        <p>$50.00</p>
-      </div>
 
-      <div class="products">
-        <img src="images/buy-2.jpg" alt="Casual Shirt" class="product-trigger">
-        <h4><a href="#" class="product-trigger">Casual Shirt</a></h4>
-        <div class="rating">
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star-half-stroke"></i>
-          <i class="fa-regular fa-star"></i>
+        <div class="product-card" data-name="Premium Smartwatch">
+          <div class="product-image">
+           <img src="product_images/watch-1485411.jpg" alt="">
+            <span class="product-badge">NEW</span>
+          </div>
+          <div class="product-info">
+            <p class="product-category">Fashion</p>
+            <h3 class="product-name">Premium Smartwatch</h3>
+            <div class="product-rating">
+              <span class="stars">★★★★☆</span>
+              <span class="rating-count">(156)</span>
+            </div>
+            <div class="product-price">
+              <span class="price-current">$299.99</span>
+              <span class="price-original">$399.99</span>
+              <span class="discount-percent">Save 25%</span>
+            </div>
+            <div class="product-actions">
+              <button class="btn-add-cart">Add to Cart</button>
+              <button class="btn-view-details">Details</button>
+            </div>
+          </div>
         </div>
-        <p>$45.00</p>
-      </div>
 
-      <div class="products">
-        <img src="images/buy-3.jpg" alt="Jeans" class="product-trigger">
-        <h4><a href="#" class="product-trigger">Jeans</a></h4>
-        <div class="rating">
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star-half-stroke"></i>
-          <i class="fa-regular fa-star"></i>
-          <i class="fa-regular fa-star"></i>
+        <div class="product-card" data-name="Smart Home Hub">
+          <div class="product-image">
+           <img src="product_images/smart-home-4905026_1920.jpg" alt="">
+            <span class="product-badge">-40%</span>
+          </div>
+          <div class="product-info">
+            <p class="product-category">Home & Garden</p>
+            <h3 class="product-name">Smart Home Hub</h3>
+            <div class="product-rating">
+              <span class="stars">★★★★★</span>
+              <span class="rating-count">(342)</span>
+            </div>
+            <div class="product-price">
+              <span class="price-current">$79.99</span>
+              <span class="price-original">$129.99</span>
+              <span class="discount-percent">Save 40%</span>
+            </div>
+            <div class="product-actions">
+              <button class="btn-add-cart">Add to Cart</button>
+              <button class="btn-view-details">Details</button>
+            </div>
+          </div>
         </div>
-        <p>$60.00</p>
-      </div>
 
-    </div>
+        <div class="product-card" data-name="4K Webcam Ultra">
+          <div class="product-image">
+            <img src="product_images/camera-1219748.jpg" alt="">
+            <span class="product-badge">-15%</span>
+          </div>
+          <div class="product-info">
+            <p class="product-category">Electronics</p>
+            <h3 class="product-name">4K Webcam Ultra</h3>
+            <div class="product-rating">
+              <span class="stars">★★★★☆</span>
+              <span class="rating-count">(89)</span>
+            </div>
+            <div class="product-price">
+              <span class="price-current">$149.99</span>
+              <span class="price-original">$169.99</span>
+              <span class="discount-percent">Save 15%</span>
+            </div>
+            <div class="product-actions">
+              <button class="btn-add-cart">Add to Cart</button>
+              <button class="btn-view-details">Details</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-name="Wireless Earbuds Max">
+          <div class="product-image">
+            <img src="product_images/earphones-5193970_1920.jpg" alt="">
+            <span class="product-badge">-30%</span>
+          </div>
+          <div class="product-info">
+            <p class="product-category">Fashion</p>
+            <h3 class="product-name">Wireless Earbuds Max</h3>
+            <div class="product-rating">
+              <span class="stars">★★★★★</span>
+              <span class="rating-count">(521)</span>
+            </div>
+            <div class="product-price">
+              <span class="price-current">$199.99</span>
+              <span class="price-original">$279.99</span>
+              <span class="discount-percent">Save 30%</span>
+            </div>
+            <div class="product-actions">
+              <button class="btn-add-cart">Add to Cart</button>
+              <button class="btn-view-details">Details</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-name="Fitness Tracker Band">
+          <div class="product-image">
+           <img src="product_images/heart-rate-monitoring-device-1903997_1920.jpg" alt="">
+            <span class="product-badge">HOT</span>
+          </div>
+          <div class="product-info">
+            <p class="product-category">Sports</p>
+            <h3 class="product-name">Fitness Tracker Band</h3>
+            <div class="product-rating">
+              <span class="stars">★★★★☆</span>
+              <span class="rating-count">(203)</span>
+            </div>
+            <div class="product-price">
+              <span class="price-current">$79.99</span>
+              <span class="price-original">$99.99</span>
+              <span class="discount-percent">Save 20%</span>
+            </div>
+            <div class="product-actions">
+              <button class="btn-add-cart">Add to Cart</button>
+              <button class="btn-view-details">Details</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED CATEGORIES SECTION -->
+    <section class="featured-categories">
+      <h2 class="section-title">Shop by Category</h2>
+      <div class="categories-grid">
+        <div class="category-card">
+          <div class="category-overlay">
+            <div class="category-name">Electronics</div>
+          </div>
+        </div>
+        <div class="category-card">
+          <div class="category-overlay">
+            <div class="category-name">Fashion</div>
+          </div>
+        </div>
+        <div class="category-card">
+          <div class="category-overlay">
+            <div class="category-name">Home &amp; Garden</div>
+          </div>
+        </div>
+        <div class="category-card">
+          <div class="category-overlay">
+            <div class="category-name">Sports</div>
+          </div>
+        </div>
+        <div class="category-card">
+          <div class="category-overlay">
+            <div class="category-name">Books &amp; Media</div>
+          </div>
+        </div>
+        <div class="category-card">
+          <div class="category-overlay">
+            <div class="category-name">More</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BEST SELLERS (added) -->
+    <section class="featured-products">
+      <h2 class="section-title">Best Sellers</h2>
+      <div class="products-grid">
+        <div class="product-card" data-name="T-shirt">
+          <div class="product-image">
+            <img src="images/buy-1.jpg" alt="Best Seller">
+            <span class="product-badge">BEST</span>
+          </div>
+          <div class="product-info">
+            <p class="product-category">Electronics</p>
+            <h3 class="product-name">T-shirt</h3>
+            <div class="product-rating">
+              <span class="stars">★★★★★</span>
+              <span class="rating-count">(1.2K)</span>
+            </div>
+            <div class="product-price">
+              <span class="price-current">$24.99</span>
+              <span class="price-original">$34.99</span>
+              <span class="discount-percent">Save 29%</span>
+            </div>
+            <div class="product-actions">
+              <button class="btn-add-cart">Add to Cart</button>
+              <button class="btn-view-details">Details</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-name="Casual Shirt">
+          <div class="product-image">
+            <img src="images/buy-2.jpg" alt="Best Seller">
+            <span class="product-badge">BEST</span>
+          </div>
+          <div class="product-info">
+            <p class="product-category">Fashion</p>
+            <h3 class="product-name">Casual Shirt</h3>
+            <div class="product-rating">
+              <span class="stars">★★★★★</span>
+              <span class="rating-count">(956)</span>
+            </div>
+            <div class="product-price">
+              <span class="price-current">$14.99</span>
+              <span class="price-original">$24.99</span>
+              <span class="discount-percent">Save 40%</span>
+            </div>
+            <div class="product-actions">
+              <button class="btn-add-cart">Add to Cart</button>
+              <button class="btn-view-details">Details</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-name="Jeans">
+          <div class="product-image">
+            <img src="images/buy-3.jpg" alt="Best Seller">
+            <span class="product-badge">BEST</span>
+          </div>
+          <div class="product-info">
+            <p class="product-category">Home & Garden</p>
+            <h3 class="product-name">Jeans</h3>
+            <div class="product-rating">
+              <span class="stars">★★★★★</span>
+              <span class="rating-count">(1.5K)</span>
+            </div>
+            <div class="product-price">
+              <span class="price-current">$49.99</span>
+              <span class="price-original">$79.99</span>
+              <span class="discount-percent">Save 38%</span>
+            </div>
+            <div class="product-actions">
+              <button class="btn-add-cart">Add to Cart</button>
+              <button class="btn-view-details">Details</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+    <!-- old product-row removed -->
   
   <!--foooter-->
 
@@ -246,6 +496,89 @@
 
 
   <script>
+    // CAROUSEL FUNCTIONALITY
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.carousel-dot');
+
+    function showSlide(n) {
+      slides.forEach(slide => slide.classList.remove('active'));
+      dots.forEach(dot => dot.classList.remove('active'));
+      
+      if (n >= slides.length) currentSlide = 0;
+      if (n < 0) currentSlide = slides.length - 1;
+      
+      slides[currentSlide].classList.add('active');
+      dots[currentSlide].classList.add('active');
+    }
+
+    function changeSlide(n) {
+      currentSlide += n;
+      showSlide(currentSlide);
+    }
+
+    function goToSlide(n) {
+      currentSlide = n;
+      showSlide(currentSlide);
+    }
+
+    // Auto-play carousel
+    setInterval(() => {
+      currentSlide++;
+      showSlide(currentSlide);
+    }, 5000);
+  </script>
+
+  <script>
+    // Add-to-cart and view-details for best sellers / product cards
+    document.querySelectorAll('.btn-add-cart').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        // simple feedback — you can replace this with cart logic (localStorage, API)
+        const original = this.textContent;
+        this.textContent = 'Added ✓';
+        this.disabled = true;
+        setTimeout(() => {
+          this.textContent = original;
+          this.disabled = false;
+        }, 1200);
+      });
+    });
+
+    // Make Details button behave like other product tiles: navigate to product.html with image/title/price
+    document.querySelectorAll('.btn-view-details').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const card = this.closest('.product-card');
+        if (!card) return;
+        const imgEl = card.querySelector('.product-image img');
+        const titleEl = card.querySelector('.product-name');
+        const priceEl = card.querySelector('.price-current') || card.querySelector('.product-price');
+        const img = imgEl ? imgEl.getAttribute('src') : '';
+        // Prefer explicit data-name attribute (so we can map names to images), then product-name text, then derive from filename
+        let title = '';
+        if (card.dataset && card.dataset.name) {
+          title = card.dataset.name;
+        } else if (titleEl && titleEl.textContent.trim()) {
+          title = titleEl.textContent.trim();
+        } else if (img) {
+          // derive from filename: images/buy-1.jpg -> buy-1
+          try {
+            const parts = img.split('/');
+            const filename = parts[parts.length - 1] || img;
+            title = filename.replace(/\.[^.]+$/, '');
+          } catch (err) {
+            title = img;
+          }
+        }
+        const price = priceEl ? priceEl.textContent.trim() : '';
+        const url = 'product.html?img=' + encodeURIComponent(img) + '&title=' + encodeURIComponent(title) + '&price=' + encodeURIComponent(price);
+        window.location.href = url;
+      });
+    });
+  </script>
+
+  <script>
 
 
     const menuIcon = document.getElementById('menuIcon');
@@ -322,7 +655,6 @@
     // Handle form submissions (dummy)
     loginForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      alert('Logged in successfully!');
       authModal.style.display = 'none';
       authModalOverlay.style.display = 'none';
     });
@@ -345,11 +677,9 @@
         // Redirect to seller dashboard
         setTimeout(() => {
           window.location.href = 'seller-dashboard.html';
-        }, 500); // small delay so alert is visible
-        alert(`Welcome Seller, ${name}! Redirecting to your dashboard...`);
+        }, 500);
       } else {
         // Redirect to shop for customers
-        alert(`Welcome, ${name}! Enjoy shopping!`);
         setTimeout(() => {
           window.location.href = 'shop.html';
         }, 500);
@@ -362,6 +692,84 @@
 
   </script>
 
+  <script>
+    // Make product tiles navigate to product page with image/title/price params
+    (function(){
+      document.querySelectorAll('.products').forEach(prod => {
+        // click handler function
+        function gotoProduct(e){
+          e.preventDefault();
+          const imgEl = prod.querySelector('img');
+          const titleEl = prod.querySelector('h4') || prod.querySelector('a');
+          const priceEl = prod.querySelector('p');
+          const img = imgEl ? imgEl.getAttribute('src') : '';
+          const title = titleEl ? titleEl.innerText.trim() : '';
+          const price = priceEl ? priceEl.innerText.trim() : '';
+          const url = 'product.html?img=' + encodeURIComponent(img) + '&title=' + encodeURIComponent(title) + '&price=' + encodeURIComponent(price);
+          window.location.href = url;
+        }
+
+        // attach to image and title links
+        prod.querySelectorAll('.product-trigger').forEach(el => {
+          el.addEventListener('click', gotoProduct);
+        });
+
+        // also attach to the whole product card for convenience
+        prod.addEventListener('click', function(e){
+          // avoid double-firing when clicking on actual links (they are handled above)
+          if(e.target.closest('a')) return;
+          gotoProduct(e);
+        });
+      });
+    })();
+  </script>
+
+  <!-- Active Navigation Link Script -->
+  <script>
+    (function() {
+      function setActiveNav() {
+        // Get current page filename
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        
+        // Remove active class from all nav links
+        document.querySelectorAll('.row a.colour').forEach(link => {
+          link.classList.remove('active');
+        });
+        
+        // Add active class to current page link with animation
+        document.querySelectorAll('.row a.colour').forEach(link => {
+          const href = link.getAttribute('href');
+          // Check if current page matches the link
+          if (currentPage.includes(href.replace('.html', '')) || 
+              (currentPage === 'index.html' && href === 'index.html') ||
+              (currentPage === '' && href === 'index.html')) {
+            // Trigger reflow to restart animation
+            link.classList.remove('active');
+            void link.offsetWidth; // Trigger reflow
+            link.classList.add('active');
+          }
+        });
+      }
+      
+      // Set active nav on page load
+      setActiveNav();
+      
+      // Also listen for popstate events (browser back/forward)
+      window.addEventListener('popstate', setActiveNav);
+      
+      // Add smooth transition when clicking links
+      document.querySelectorAll('.row a.colour').forEach(link => {
+        link.addEventListener('click', function(e) {
+          // Remove active from all
+          document.querySelectorAll('.row a.colour').forEach(l => {
+            l.classList.remove('active');
+          });
+          // Add to clicked link
+          this.classList.add('active');
+        });
+      });
+    })();
+  </script>
 
 </body>
 

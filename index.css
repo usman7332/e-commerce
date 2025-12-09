@@ -3,6 +3,49 @@
     
 }
 
+/* Import a clean, modern font and define color variables */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root{
+  --primary: #0066c0; /* main blue */
+  --accent: #00bfff;  /* bright accent */
+  --text: #053e74;    /* readable bluish text for body */
+  --muted: #6b7b8c;
+}
+
+/* Global typography */
+body {
+  color: var(--text);
+  font-family: 'Poppins', 'PT Serif', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headings get a stylish serif + bold blue accent */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--primary);
+  font-family: 'PT Serif', 'Poppins', serif;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+/* Default link color (non-header links). Header navs use .colour and will keep their own styles */
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+/* Site title styled with same gradient as buttons (gradient text) */
+.site-title{
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: 0.6px;
+}
+
 
 
 
@@ -772,6 +815,79 @@ body {
   .categories-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* --- Category cards styling --- */
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.category-card {
+  height: 160px;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 8px 24px rgba(4, 27, 54, 0.12);
+}
+
+.category-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 14px;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 30%, rgba(0,0,0,0.45) 100%);
+}
+
+.category-name {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.45);
+}
+
+/* Use <img> elements inside category cards for crisp scaling and proper object-fit.
+   The HTML has <img class="category-bg" src="..."> inside each .category-card. */
+.category-card.electronics { /* image set in HTML */ }
+.category-card.fashion { }
+.category-card.home { }
+.category-card.sports { }
+.category-card.books { }
+.category-card.more { }
+
+/* Style the inner image to cover the card while keeping aspect ratio without blurring */
+.category-card .category-bg{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* cover keeps aspect ratio and fills the box */
+  object-position: center;
+  display: block;
+  z-index: 1;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Ensure overlay and text sit above the image */
+.category-overlay{ z-index: 2; }
+.category-name{ z-index: 3; position: relative; }
+
+@media (max-width: 900px) {
+  .categories-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .categories-grid {
+    grid-template-columns: 1fr;
+  }
+  .category-card { height: 140px; }
 }
 
 /* Old responsive styles below */

@@ -854,7 +854,7 @@
         </div>
 
         <div style="margin-top: 20px; padding: 15px; background-color: #f9fafb; border-radius: 8px;">
-          <h3 style="margin-bottom: 10px;">📝Internal Notes</h3>
+          <h3 style="margin-bottom: 10px;">Internal Notes</h3>
           <textarea id="internalNotes" placeholder="Add or edit notes..." style="width: 100%; min-height: 80px; padding: 10px; border: 1px solid #ddd; border-radius: 6px; font-size: 13px; font-family: inherit;"></textarea>
           <button class="btn btn-primary" onclick="saveInternalNotes()" style="margin-top: 10px; width: 100%; justify-content: center;">Save Notes</button>
         </div>
@@ -963,9 +963,9 @@
           <div class="partner-logo">${partner.logo}</div>
           <div class="partner-name">${partner.name}</div>
           <div class="partner-details">
-            <p style="margin: 5px 0; font-size: 12px;">⚡ ${partner.speed}</p>
-            <p style="margin: 5px 0; font-size: 12px;">💰 ${partner.charge}</p>
-            <p style="margin: 5px 0; font-size: 12px;">⭐ ${partner.rating}</p>
+            <p style="margin: 5px 0; font-size: 12px;">${partner.speed}</p>
+            <p style="margin: 5px 0; font-size: 12px;">${partner.charge}</p>
+            <p style="margin: 5px 0; font-size: 12px;">${partner.rating}</p>
           </div>
         </div>
       `).join('');
@@ -1309,7 +1309,7 @@
       if (results.length === 0) {
         document.getElementById('trackingResultsContainer').innerHTML = `
           <div class="empty-state">
-            <div class="empty-state-icon">❌</div>
+            <div class="empty-state-icon"></div>
             <p>No shipments found matching your search</p>
           </div>
         `;
@@ -1379,10 +1379,10 @@
         if (isCurrent) dotClass = 'active';
 
         const icon = {
-          'Pending': '📦',
-          'In Transit': '🚚',
-          'Out for Delivery': '🚪',
-          'Delivered': '✅'
+          'Pending': '',
+          'In Transit': '',
+          'Out for Delivery': '',
+          'Delivered': ''
         }[status];
 
         return `

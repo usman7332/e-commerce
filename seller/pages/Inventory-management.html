@@ -610,8 +610,8 @@
         <div class="section-header">
           <div class="section-title">Recent Stock Updates & History</div>
           <div style="display: flex; gap: 10px;">
-            <button class="btn btn-secondary" onclick="openBulkRestockModal()" style="font-size: 13px;">📤 Bulk Restock</button>
-            <button class="btn btn-primary" onclick="exportInventoryCSV()" style="font-size: 13px;">📥 Export CSV</button>
+            <button class="btn btn-secondary" onclick="openBulkRestockModal()" style="font-size: 13px;">Bulk Restock</button>
+            <button class="btn btn-primary" onclick="exportInventoryCSV()" style="font-size: 13px;">Export CSV</button>
           </div>
         </div>
         <div id="restockHistoryContainer" style="background: white; padding: 20px; border-radius: 10px; max-height: 400px; overflow-y: auto;">
@@ -622,7 +622,7 @@
       <!-- Low Stock Alerts Section -->
       <div class="inventory-section" style="margin-top: 30px;" id="lowStockAlertsSection" style="display: none;">
         <div class="section-header">
-          <div class="section-title">⚠️ Low Stock Alerts</div>
+          <div class="section-title">Low Stock Alerts</div>
         </div>
         <div id="lowStockAlerts" style="background: white; padding: 20px; border-radius: 10px;">
         </div>
@@ -641,8 +641,8 @@
         <div style="display: grid; grid-template-columns: 150px 1fr; gap: 30px; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 2px solid #e5e7eb;">
           <!-- Product Image Section -->
           <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
-            <div style="font-size: 80px; background: #f0f0f0; width: 130px; height: 130px; display: flex; align-items: center; justify-content: center; border-radius: 10px; margin-bottom: 10px;" id="productImage">📦</div>
-            <span style="font-size: 12px; color: #999;">Product Icon</span>
+            <img id="productImage" src="" alt="Product Image" style="width: 130px; height: 130px; object-fit: cover; background: #f0f0f0; border-radius: 10px; margin-bottom: 10px; border: 1px solid #ddd;">
+            <span style="font-size: 12px; color: #999;">Product Image</span>
           </div>
           
           <!-- Product Info Section -->
@@ -724,7 +724,7 @@
       </div>
       <div class="modal-body">
         <div class="detail-section" style="margin-bottom: 20px;">
-          <h3>✓ Your KYC Information</h3>
+          <h3>Your KYC Information</h3>
           <div class="detail-item">
             <label>Seller Name:</label>
             <value>Tech Store Pro</value>
@@ -744,10 +744,10 @@
         </div>
 
         <div class="detail-section" style="margin-bottom: 20px;">
-          <h3>📋 KYC Verification Timeline</h3>
+          <h3>KYC Verification Timeline</h3>
           <div style="display: flex; gap: 20px; margin: 20px 0;">
             <div style="text-align: center; flex: 1;">
-              <div style="width: 40px; height: 40px; border-radius: 50%; background: #28a745; color: white; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; font-weight: 600;">✓</div>
+              <div style="width: 40px; height: 40px; border-radius: 50%; background: #28a745; color: white; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; font-weight: 600;">1</div>
               <div style="font-size: 12px; color: #666;">Documents Submitted</div>
             </div>
             <div style="text-align: center; flex: 1;">
@@ -762,24 +762,21 @@
         </div>
 
         <div class="detail-section">
-          <h3>📄 Submitted Documents</h3>
+          <h3>Submitted Documents</h3>
           <div style="margin-bottom: 15px;">
             <div style="display: flex; align-items: center; gap: 10px; padding: 10px; background: #f9fafb; border-radius: 6px; margin-bottom: 10px;">
-              <span style="font-size: 18px;">✓</span>
               <div>
                 <div style="font-weight: 600; font-size: 13px;">CNIC Front & Back</div>
                 <div style="font-size: 11px; color: #999;">Verified</div>
               </div>
             </div>
             <div style="display: flex; align-items: center; gap: 10px; padding: 10px; background: #f9fafb; border-radius: 6px; margin-bottom: 10px;">
-              <span style="font-size: 18px;">✓</span>
               <div>
                 <div style="font-weight: 600; font-size: 13px;">Bank Statement</div>
                 <div style="font-size: 11px; color: #999;">Under Review</div>
               </div>
             </div>
             <div style="display: flex; align-items: center; gap: 10px; padding: 10px; background: #f9fafb; border-radius: 6px;">
-              <span style="font-size: 18px;">✓</span>
               <div>
                 <div style="font-weight: 600; font-size: 13px;">Address Verification</div>
                 <div style="font-size: 11px; color: #999;">Under Review</div>
@@ -802,14 +799,14 @@
     
     // ===== DUMMY DATA =====
     const dummyInventory = [
-      { id: 1, product: 'Wireless Headphones', sku: 'SKU-001', category: 'Electronics', stock: 45, threshold: 20, status: 'In Stock', warehouse: 'Main Warehouse', image: '🎧', price: 79.99, variants: [{name: 'Black', sku: 'SKU-001-BK', qty: 25}, {name: 'White', sku: 'SKU-001-WH', qty: 20}] },
-      { id: 2, product: 'USB Type-C Cable', sku: 'SKU-002', category: 'Cables', stock: 8, threshold: 15, status: 'Low Stock', warehouse: 'Main Warehouse', image: '🔌', price: 12.99, variants: [] },
-      { id: 3, product: 'Phone Case', sku: 'SKU-003', category: 'Accessories', stock: 0, threshold: 10, status: 'Out of Stock', warehouse: 'Warehouse A', image: '📱', price: 24.99, variants: [] },
-      { id: 4, product: 'Laptop Stand', sku: 'SKU-004', category: 'Office', stock: 32, threshold: 15, status: 'In Stock', warehouse: 'Warehouse B', image: '🖥️', price: 45.99, variants: [] },
-      { id: 5, product: 'Mechanical Keyboard', sku: 'SKU-005', category: 'Electronics', stock: 12, threshold: 25, status: 'Low Stock', warehouse: 'Main Warehouse', image: '⌨️', price: 89.99, variants: [{name: 'RGB', sku: 'SKU-005-RGB', qty: 7}, {name: 'Standard', sku: 'SKU-005-STD', qty: 5}] },
-      { id: 6, product: 'Monitor Mount', sku: 'SKU-006', category: 'Office', stock: 0, threshold: 5, status: 'Out of Stock', warehouse: 'Warehouse A', image: '🖨️', price: 34.99, variants: [] },
-      { id: 7, product: 'USB Hub', sku: 'SKU-007', category: 'Electronics', stock: 55, threshold: 20, status: 'In Stock', warehouse: 'Main Warehouse', image: '🔗', price: 29.99, variants: [] },
-      { id: 8, product: 'Screen Protector', sku: 'SKU-008', category: 'Accessories', stock: 120, threshold: 50, status: 'In Stock', warehouse: 'Warehouse B', image: '🛡️', price: 9.99, variants: [{name: 'iPhone 13', sku: 'SKU-008-IP13', qty: 60}, {name: 'iPhone 14', sku: 'SKU-008-IP14', qty: 60}] },
+      { id: 1, product: 'Wireless Headphones', sku: 'SKU-001', category: 'Electronics', stock: 45, threshold: 20, status: 'In Stock', warehouse: 'Main Warehouse', image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&q=80', price: 79.99, variants: [{name: 'Black', sku: 'SKU-001-BK', qty: 25}, {name: 'White', sku: 'SKU-001-WH', qty: 20}] },
+      { id: 2, product: 'USB Type-C Cable', sku: 'SKU-002', category: 'Cables', stock: 8, threshold: 15, status: 'Low Stock', warehouse: 'Main Warehouse', image: 'https://images.unsplash.com/photo-1625948515291-69613efd103f?w=200&q=80', price: 12.99, variants: [] },
+      { id: 3, product: 'Phone Case', sku: 'SKU-003', category: 'Accessories', stock: 0, threshold: 10, status: 'Out of Stock', warehouse: 'Warehouse A', image: 'https://images.unsplash.com/photo-1602526323525-9dda67f4a1a6?w=200&q=80', price: 24.99, variants: [] },
+      { id: 4, product: 'Laptop Stand', sku: 'SKU-004', category: 'Office', stock: 32, threshold: 15, status: 'In Stock', warehouse: 'Warehouse B', image: 'https://images.unsplash.com/photo-1527814050087-3793815479db?w=200&q=80', price: 45.99, variants: [] },
+      { id: 5, product: 'Mechanical Keyboard', sku: 'SKU-005', category: 'Electronics', stock: 12, threshold: 25, status: 'Low Stock', warehouse: 'Main Warehouse', image: 'https://images.unsplash.com/photo-1587829191301-41f6a6c1aab9?w=200&q=80', price: 89.99, variants: [{name: 'RGB', sku: 'SKU-005-RGB', qty: 7}, {name: 'Standard', sku: 'SKU-005-STD', qty: 5}] },
+      { id: 6, product: 'Monitor Mount', sku: 'SKU-006', category: 'Office', stock: 0, threshold: 5, status: 'Out of Stock', warehouse: 'Warehouse A', image: 'https://images.unsplash.com/photo-1593642632640-e4e57eeeaed9?w=200&q=80', price: 34.99, variants: [] },
+      { id: 7, product: 'USB Hub', sku: 'SKU-007', category: 'Electronics', stock: 55, threshold: 20, status: 'In Stock', warehouse: 'Main Warehouse', image: 'https://images.unsplash.com/photo-1625948515291-69613efd103f?w=200&q=80', price: 29.99, variants: [] },
+      { id: 8, product: 'Screen Protector', sku: 'SKU-008', category: 'Accessories', stock: 120, threshold: 50, status: 'In Stock', warehouse: 'Warehouse B', image: 'https://images.unsplash.com/photo-1569163139394-de4798aa62b8?w=200&q=80', price: 9.99, variants: [{name: 'iPhone 13', sku: 'SKU-008-IP13', qty: 60}, {name: 'iPhone 14', sku: 'SKU-008-IP14', qty: 60}] },
     ];
 
     // Restock History Data
@@ -997,7 +994,7 @@
         document.getElementById('productPrice').textContent = '$' + product.price;
         document.getElementById('currentStock').textContent = product.stock + ' units';
         document.getElementById('productStatus').textContent = product.status;
-        document.getElementById('productImage').textContent = product.image || '📦';
+        document.getElementById('productImage').src = product.image || 'https://via.placeholder.com/130?text=No+Image';
         
         // Set status color
         const statusEl = document.getElementById('productStatus');
@@ -1102,7 +1099,7 @@
       });
 
       // Show confirmation with details
-      let confirmMsg = `✓ Stock Updated Successfully!\n\n`;
+      let confirmMsg = `Stock Updated Successfully!\n\n`;
       confirmMsg += `Product: ${product.product} (${product.sku})\n`;
       confirmMsg += `Old Stock: ${oldStock}\n`;
       confirmMsg += `New Stock: ${product.stock}\n`;
@@ -1304,7 +1301,7 @@ SKU-005,Mechanical Keyboard,15,Main Warehouse`;
 
         renderInventoryTable();
         updateSummary();
-        alert(`Bulk Restock Complete!\n✓ Successfully updated: ${successCount} products\n✗ Failed: ${failCount} products`);
+        alert(`Bulk Restock Complete!\nSuccessfully updated: ${successCount} products\nFailed: ${failCount} products`);
       }
     }
 
@@ -1388,10 +1385,10 @@ SKU-005,Mechanical Keyboard,15,Main Warehouse`;
 
     function updateKYCDisplay() {
       const statusMap = {
-        'pending': '⏳ Pending Review',
-        'review': '🔍 Under Review',
-        'verified': '✓ Verified',
-        'rejected': '✗ Rejected'
+        'pending': 'Pending Review',
+        'review': 'Under Review',
+        'verified': 'Verified',
+        'rejected': 'Rejected'
       };
 
       const colorMap = {

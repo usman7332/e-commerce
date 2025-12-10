@@ -115,7 +115,7 @@
       <li class="nav-item"><a data-page="Delivery-panel">Delivery</a></li>
       <li class="nav-item"><a data-page="Seller-Performance">Analytics</a></li>
       <li class="nav-item"><a data-page="Refunds-Returns">Return/Refund</a></li>
-      <li class="nav-item"><a data-page="settings">Settings</a></li>
+      <li class="nav-item"><a data-page="Settings">Settings</a></li>
     </ul>
   </aside>
 
@@ -160,14 +160,13 @@
         const scripts = container.querySelectorAll("script");
 
         scripts.forEach(oldScript => {
-          // For inline scripts, execute with eval in a fresh context
           if (!oldScript.src) {
-            // Use eval to execute script in fresh context every time
-            try {
-              eval(oldScript.innerHTML);
-            } catch (e) {
-              console.error("Script execution error:", e);
-            }
+            // For inline scripts, create a new script element
+            const newScript = document.createElement("script");
+            newScript.textContent = oldScript.innerHTML;
+            newScript.async = false;
+            // Append to body so it executes in global scope
+            document.body.appendChild(newScript);
           } else {
             // For external scripts, create new script element
             const newScript = document.createElement("script");

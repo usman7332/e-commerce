@@ -773,7 +773,7 @@
         <!-- Customer & Order Info -->
         <div class="detail-grid">
           <div class="detail-section">
-            <h3>👤 Customer Details</h3>
+            <h3>Customer Details</h3>
             <div class="detail-item">
               <label>Name:</label>
               <value id="detailCustomer"></value>
@@ -789,7 +789,7 @@
           </div>
 
           <div class="detail-section">
-            <h3>📦 Order Details</h3>
+            <h3>Order Details</h3>
             <div class="detail-item">
               <label>Order ID:</label>
               <value id="detailOrderId"></value>
@@ -807,7 +807,7 @@
 
         <!-- Return Reason -->
         <div class="detail-section" style="margin-bottom: 30px;">
-          <h3>📝 Return Reason</h3>
+          <h3>Return Reason</h3>
           <div class="detail-item">
             <label>Reason:</label>
           </div>
@@ -816,20 +816,20 @@
 
         <!-- Images -->
         <div class="detail-section" style="margin-bottom: 30px;">
-          <h3>🖼️ Uploaded Images</h3>
+          <h3>Uploaded Images</h3>
           <div id="detailImages" style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 10px;">
           </div>
         </div>
 
         <!-- Timeline -->
         <div class="timeline">
-          <h3>🕒 Return Timeline</h3>
+          <h3>Return Timeline</h3>
           <div id="detailTimeline"></div>
         </div>
 
         <!-- Update Status -->
         <div class="detail-section" style="margin-bottom: 30px;">
-          <h3>⚙️ Update Return Status</h3>
+          <h3>Update Return Status</h3>
           <div style="margin-bottom: 15px;">
             <label style="display: block; margin-bottom: 8px; font-weight: 600; font-size: 14px;">Return Status</label>
             <select id="returnStatusSelect" class="filter-select" style="width: 100%; padding: 10px 15px; border: 1px solid #ddd; border-radius: 6px;">
@@ -849,7 +849,7 @@
 
         <!-- Refund Calculator -->
         <div class="refund-calc">
-          <h3>💰 Refund Calculator</h3>
+          <h3>Refund Calculator</h3>
           <div class="calc-input">
             <label>Product Price</label>
             <input type="number" id="calcPrice" placeholder="0.00" step="0.01">
@@ -1348,10 +1348,10 @@
         renderReturnsTable();
 
         // Show confirmation message with detailed info
-        const action = newStatus === 'Approved' ? '✓ Approved' : 
-                      newStatus === 'Rejected' ? '✗ Rejected' : 
-                      newStatus === 'Under Review' ? '◊ Moved to Review' :
-                      newStatus === 'Completed' ? '✓ Completed' : newStatus;
+        const action = newStatus === 'Approved' ? 'Approved' : 
+                      newStatus === 'Rejected' ? 'Rejected' : 
+                      newStatus === 'Under Review' ? 'Moved to Review' :
+                      newStatus === 'Completed' ? 'Completed' : newStatus;
         
         alert(`Return ${action}!\n\n${notes ? 'Notes: ' + notes : 'No additional notes'}`);
         document.getElementById('returnStatusNotes').value = '';

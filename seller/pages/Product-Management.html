@@ -1334,7 +1334,7 @@
               </div>
               <div>
                 <span class="info-label">Price</span>
-                <span class="info-value" id="detailPrice">$0.00</span>
+                <span class="info-value" id="detailPrice">0.00</span>
               </div>
               <div>
                 <span class="info-label">Stock</span>
@@ -1728,7 +1728,7 @@
           <td class="product-name">${p.name}</td>
           <td>${p.sku}</td>
           <td>${p.category}</td>
-          <td>$${p.price.toFixed(2)}</td>
+          <td>${p.price.toFixed(2)}</td>
           <td><span class="status-badge ${getStockBadge(p.stock)}">${getStockText(p.stock)}</span></td>
           <td><span class="status-badge badge-${p.status.toLowerCase()}">${p.status}</span></td>
           <td class="actions-cell">
@@ -2116,7 +2116,7 @@
         setText('detailProductSKU', `SKU: ${product.sku}`);
         setText('detailBrand', product.brand || 'N/A');
         setText('detailCategory', product.category);
-        setText('detailPrice', `$${product.price.toFixed(2)}`);
+        setText('detailPrice', `${product.price.toFixed(2)}`);
         setText('detailStock', product.stock);
         setText('detailStatus', product.status);
         setText('detailBarcode', product.barcode || 'N/A');

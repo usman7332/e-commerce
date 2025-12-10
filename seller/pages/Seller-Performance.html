@@ -626,7 +626,7 @@
           card.style.borderLeftColor = metric.color;
           card.innerHTML = `
             <p>${metric.label}</p>
-            <div class="metric-value">$${metric.value.toLocaleString()}</div>
+            <div class="metric-value">${metric.value.toLocaleString()}</div>
             <div class="metric-change ${!metric.positive ? 'negative' : ''}">
               <span class="material-symbols-rounded" style="font-size:14px">${metric.icon}</span>
               ${metric.positive ? '+' : ''}${metric.change}% ${metric.positive ? 'vs yesterday' : 'vs last month'}
@@ -738,7 +738,7 @@
           const tr = document.createElement('tr');
           if(i<3) tr.classList.add('highlight');
           const pct = ((p.revenue/totalRevenue)*100).toFixed(1);
-          tr.innerHTML = `<td><strong>${p.product}</strong></td><td>${p.units}</td><td>$${p.revenue.toLocaleString()} <span style="font-size:11px;color:#999">${pct}%</span></td><td>${p.category}</td>`;
+          tr.innerHTML = `<td><strong>${p.product}</strong></td><td>${p.units}</td><td>${p.revenue.toLocaleString()} <span style="font-size:11px;color:#999">${pct}%</span></td><td>${p.category}</td>`;
           tbody.appendChild(tr);
         });
         console.log('Best selling products rendered');

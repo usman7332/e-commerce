@@ -1508,7 +1508,7 @@
       document.getElementById('detailDateRaised').textContent = currentDisputeDetail.dateRaised;
       document.getElementById('detailStatus').innerHTML = `<span class="status-badge badge-${currentDisputeDetail.status.toLowerCase().replace(' ', '-')}">${currentDisputeDetail.status}</span>`;
       document.getElementById('detailOrderId').textContent = currentDisputeDetail.orderId;
-      document.getElementById('detailAmount').textContent = `$${currentDisputeDetail.amount.toFixed(2)}`;
+      document.getElementById('detailAmount').textContent = `${currentDisputeDetail.amount.toFixed(2)}`;
       document.getElementById('detailDateOrdered').textContent = currentDisputeDetail.dateOrdered;
       document.getElementById('detailReviewer').textContent = currentDisputeDetail.reviewer;
       document.getElementById('detailDescription').textContent = currentDisputeDetail.description;
@@ -1536,7 +1536,7 @@
         decisionBox.style.display = 'block';
         document.getElementById('adminDecision').textContent = currentDisputeDetail.adminDecision.decision;
         document.getElementById('adminComments').textContent = currentDisputeDetail.adminDecision.comments;
-        document.getElementById('adminCompensation').textContent = `$${currentDisputeDetail.adminDecision.compensation.toFixed(2)}`;
+        document.getElementById('adminCompensation').textContent = `${currentDisputeDetail.adminDecision.compensation.toFixed(2)}`;
         document.getElementById('adminDecisionDate').textContent = currentDisputeDetail.adminDecision.date;
       } else {
         decisionBox.style.display = 'none';

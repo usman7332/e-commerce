@@ -716,7 +716,7 @@
         </div>
         <div class="summary-card" style="border-left-color: #17a2b8;">
           <p>Total Refunded</p>
-          <div class="summary-value" id="totalRefunded">$0.00</div>
+          <div class="summary-value" id="totalRefunded">0.00</div>
         </div>
       </div>
 
@@ -868,15 +868,15 @@
           </div>
           <div class="calc-row">
             <span>Commission Amount</span>
-            <span id="calcCommissionAmount">$0.00</span>
+            <span id="calcCommissionAmount">0.00</span>
           </div>
           <div class="calc-row">
             <span>Return Fee</span>
-            <span id="calcReturnFeeAmount">$0.00</span>
+            <span id="calcReturnFeeAmount">0.00</span>
           </div>
           <div class="calc-row grand-total">
             <span>Final Refund Amount</span>
-            <span id="calcFinalRefund">$0.00</span>
+            <span id="calcFinalRefund">0.00</span>
           </div>
         </div>
 
@@ -1126,7 +1126,7 @@
           <td>${ret.product}</td>
           <td>${ret.dateRequested}</td>
           <td style="max-width: 150px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="${ret.reason}">${ret.reason}</td>
-          <td>$${ret.refund.toFixed(2)}</td>
+          <td>${ret.refund.toFixed(2)}</td>
           <td><span class="status-badge ${statusClass}">${ret.status}</span></td>
           <td>
             <div class="action-buttons">
@@ -1192,7 +1192,7 @@
       document.getElementById('detailPhone').textContent = currentReturnDetail.phone;
       document.getElementById('detailOrderId').textContent = currentReturnDetail.orderId;
       document.getElementById('detailProduct').textContent = currentReturnDetail.product;
-      document.getElementById('detailPrice').textContent = `$${currentReturnDetail.price.toFixed(2)}`;
+      document.getElementById('detailPrice').textContent = `${currentReturnDetail.price.toFixed(2)}`;
       document.getElementById('detailReason').textContent = currentReturnDetail.reason;
 
       // Images
@@ -1371,9 +1371,9 @@
       const commissionAmount = price * (commission / 100);
       const finalRefund = Math.max(0, price - commissionAmount - returnFee);
 
-      document.getElementById('calcCommissionAmount').textContent = `$${commissionAmount.toFixed(2)}`;
-      document.getElementById('calcReturnFeeAmount').textContent = `$${returnFee.toFixed(2)}`;
-      document.getElementById('calcFinalRefund').textContent = `$${finalRefund.toFixed(2)}`;
+      document.getElementById('calcCommissionAmount').textContent = `${commissionAmount.toFixed(2)}`;
+      document.getElementById('calcReturnFeeAmount').textContent = `${returnFee.toFixed(2)}`;
+      document.getElementById('calcFinalRefund').textContent = `${finalRefund.toFixed(2)}`;
     }
 
     // ===== CONFIRMATION =====
@@ -1427,7 +1427,7 @@
       document.getElementById('pendingCount').textContent = pending;
       document.getElementById('approvedCount').textContent = approved;
       document.getElementById('rejectedCount').textContent = rejected;
-      document.getElementById('totalRefunded').textContent = `$${totalRefunded.toFixed(2)}`;
+      document.getElementById('totalRefunded').textContent = `${totalRefunded.toFixed(2)}`;
     }
 
     // ===== MODAL CLOSE =====

@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Messages - Seller Dashboard</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+    }
+
+    .main-content {
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    .main-content h1 {
+      color: #232f3e;
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+
+    .messagesPage {
+      display: flex;
+      gap: 20px;
+      padding: 0;
+    }
+
+    .messagesLeft {
+      flex: 0 0 320px;
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      border: 1px solid #e5e7eb;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .searchBox {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .searchBox input {
+      flex: 1;
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 13px;
+    }
+
+    .searchBox input:focus {
+      outline: none;
+      border-color: #232f3e;
+      box-shadow: 0 0 0 3px rgba(35, 47, 62, 0.1);
+    }
+
+    .searchBox button {
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      background: white;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .searchBox button:hover {
+      background: #f5f5f5;
+      border-color: #232f3e;
+    }
+
+    .filterBtns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 15px;
+    }
+
+    .filterBtn {
+      padding: 8px 12px;
+      border: 1px solid #e5e7eb;
+      background: #f9fafb;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12px;
+      transition: all 0.2s;
+    }
+
+    .filterBtn:hover {
+      background: #f0f0f0;
+    }
+
+    .filterBtn.active {
+      background: #232f3e;
+      color: white;
+      border-color: #232f3e;
+    }
+
+    .convoList {
+      flex: 1;
+      overflow-y: auto;
+      list-style: none;
+      padding: 0;
+    }
+
+    .convoItem {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px;
+      border-radius: 8px;
+      border-bottom: 1px solid #f0f0f0;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .convoItem:hover {
+      background: #f9fafb;
+    }
+
+    .convoAvatar {
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
+      border-radius: 50%;
+      background: #232f3e;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: white;
+      font-size: 16px;
+    }
+
+    .convoMeta {
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .convoTop {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .convoBuyer {
+      font-weight: 600;
+      font-size: 14px;
+      color: #232f3e;
+    }
+
+    .convoPreview {
+      font-size: 13px;
+      color: #666;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .messagesCenter {
+      flex: 1;
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      border: 1px solid #e5e7eb;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .noConvo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      color: #999;
+      text-align: center;
+    }
+
+    .convoPanel {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .convoHeader {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #f0f0f0;
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+    }
+
+    .convoHeader h3 {
+      margin: 0;
+      font-size: 16px;
+      color: #232f3e;
+      font-weight: 600;
+    }
+
+    .actionBtns {
+      display: flex;
+      gap: 10px;
+    }
+
+    .actionBtns button {
+      padding: 8px 14px;
+      border: 1px solid #ddd;
+      background: white;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12px;
+      transition: all 0.2s;
+    }
+
+    .actionBtns button:hover {
+      border-color: #232f3e;
+      color: #232f3e;
+      background: #f9fafb;
+    }
+
+    .chatWindow {
+      flex: 1;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: #fafafa;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+
+    .chatBubble {
+      max-width: 70%;
+      padding: 12px 14px;
+      border-radius: 10px;
+      word-wrap: break-word;
+      line-height: 1.4;
+      font-size: 14px;
+    }
+
+    .chatBubble.buyer {
+      align-self: flex-start;
+      background: white;
+      border: 1px solid #e8e8e8;
+      color: #333;
+    }
+
+    .chatBubble.seller {
+      align-self: flex-end;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+
+    .msgTime {
+      font-size: 11px;
+      opacity: 0.7;
+      margin-top: 6px;
+    }
+
+    .chatBubble.seller .msgTime {
+      text-align: right;
+    }
+
+    .replySection {
+      border-top: 2px solid #f0f0f0;
+      padding-top: 15px;
+      margin-top: auto;
+    }
+
+    .quickReplyBox {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .quickReplyBox label {
+      font-size: 13px;
+      color: #666;
+      font-weight: 600;
+    }
+
+    .quickReplyBox select {
+      flex: 1;
+      min-width: 200px;
+      padding: 8px 10px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 12px;
+    }
+
+    .quickReplyBox button {
+      padding: 8px 14px;
+      background: #f0f0f0;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12px;
+      transition: all 0.2s;
+    }
+
+    .quickReplyBox button:hover {
+      background: #e0e0e0;
+    }
+
+    .composeRow {
+      display: flex;
+      align-items: flex-end;
+      gap: 10px;
+    }
+
+    .composeRow button:first-child {
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      background: white;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+
+    .composeRow button:first-child:hover {
+      background: #f0f0f0;
+    }
+
+    .composeRow textarea {
+      flex: 1;
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      min-height: 44px;
+      resize: vertical;
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+    }
+
+    .composeRow textarea:focus {
+      outline: none;
+      border-color: #232f3e;
+      box-shadow: 0 0 0 3px rgba(35, 47, 62, 0.1);
+    }
+
+    .primaryBtn {
+      background: #232f3e;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(35, 47, 62, 0.4);
+    }
+
+    .primaryBtn:hover {
+      background: #37475a;
+      box-shadow: 0 6px 20px rgba(35, 47, 62, 0.6);
+      transform: translateY(-2px);
+    }
+
+    .messagesRight {
+      flex: 0 0 300px;
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      border: 1px solid #e5e7eb;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .infoCard {
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 15px;
+      background: #f9fafb;
+    }
+
+    .infoCard h4 {
+      margin: 0 0 12px 0;
+      font-size: 14px;
+      color: #232f3e;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .infoCard p {
+      margin: 8px 0;
+      font-size: 13px;
+      color: #333;
+    }
+
+    .infoCard img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-bottom: 12px;
+      border: 1px solid #e5e7eb;
+    }
+
+    .mutedText {
+      color: #999;
+      font-size: 12px;
+    }
+
+    .refundCard {
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 15px;
+      display: none;
+      background: #fef3c7;
+      border-left: 4px solid #fbbf24;
+    }
+
+    .refundCard h4 {
+      margin: 0 0 10px 0;
+      color: #232f3e;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .refundCard p {
+      font-size: 12px;
+      margin: 6px 0;
+      color: #666;
+    }
+
+    .refundBtns {
+      display: flex;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .refundBtns button {
+      flex: 1;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .refundBtns button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    #refundHistoryModal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    #refundHistoryModal.show {
+      display: flex;
+    }
+
+    .modalContent {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+      max-height: 80%;
+      overflow-y: auto;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .modalContent h4 {
+      margin: 0 0 20px 0;
+      font-size: 16px;
+      color: #232f3e;
+      font-weight: 600;
+    }
+
+    .modalTimeline {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .modalTimeline li {
+      border-left: 2px solid #ddd;
+      margin-left: 15px;
+      padding-left: 15px;
+      margin-bottom: 15px;
+      position: relative;
+      font-size: 13px;
+      color: #666;
+    }
+
+    .modalTimeline li::before {
+      content: '';
+      position: absolute;
+      left: -8px;
+      top: 2px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #232f3e;
+      border: 2px solid white;
+    }
+
+    .progressStep {
+      margin: 8px 0;
+      padding: 8px 12px;
+      border-radius: 6px;
+      background: #f0f0f0;
+      font-size: 12px;
+      color: #666;
+    }
+
+    .progressStep.done {
+      background: #d4edda;
+      color: #155724;
+      font-weight: 600;
+    }
+
+    @media (max-width: 1200px) {
+      .messagesRight {
+        flex: 0 0 250px;
+      }
+
+      .chatBubble {
+        max-width: 85%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .messagesPage {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .messagesLeft,
+      .messagesCenter,
+      .messagesRight {
+        flex: 1;
+        min-height: 300px;
+      }
+
+      .chatBubble {
+        max-width: 95%;
+      }
+
+      .composeRow {
+        flex-direction: column;
+      }
+
+      .composeRow textarea {
+        width: 100%;
+      }
+
+      .primaryBtn {
+        width: 100%;
+      }
+
+      .quickReplyBox {
+        flex-direction: column;
+      }
+
+      .quickReplyBox select {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="main-content">
+  <h1>Messages</h1>
+
+  <div class="messagesPage">
+    <aside class="messagesLeft">
+      <div class="searchBox">
+        <input id="searchMsgInput" type="search" placeholder="Search conversations...">
+        <button id="clearSearchBtn">✕</button>
+      </div>
+
+      <div class="filterBtns">
+        <button class="filterBtn active" data-filter="all">All</button>
+        <button class="filterBtn" data-filter="unread">Unread</button>
+        <button class="filterBtn" data-filter="awaiting">Awaiting Reply</button>
+        <button class="filterBtn" data-filter="orders">Order Messages</button>
+      </div>
+
+      <ul id="convoList" class="convoList"></ul>
+    </aside>
+
+    <main class="messagesCenter">
+      <div id="noConvo" class="noConvo">
+        <h3>Select a conversation</h3>
+        <p>Click any conversation to view and reply.</p>
+      </div>
+
+      <div id="convoPanel" class="convoPanel" style="display: none;">
+        <div class="convoHeader">
+          <div>
+            <h3 id="buyerNameHeader">Buyer Name</h3>
+            <p class="mutedText" id="orderMeta">
+              Order: <span id="orderIdHeader">—</span>
+            </p>
+          </div>
+          <div class="actionBtns">
+            <button id="markReadBtn">Mark Read</button>
+            <button id="archiveBtn">Archive</button>
+          </div>
+        </div>
+
+        <div id="chatWindow" class="chatWindow"></div>
+
+        <div class="replySection">
+          <div class="quickReplyBox">
+            <label>Quick replies:</label>
+            <select id="quickReplySelect">
+              <option value="">Choose a template…</option>
+              <option>Thanks for contacting us — your item will ship within 24 hours.</option>
+              <option>We apologize for the delay. We've escalated this to our team.</option>
+              <option>Can you please share a photo of the issue?</option>
+              <option>Your refund has been processed — allow 3–5 business days.</option>
+            </select>
+            <button id="insertTemplateBtn">Insert</button>
+          </div>
+
+          <div class="composeRow">
+            <input type="file" id="attachFileInput" style="display: none" accept="image/*,application/pdf">
+            <button id="attachFileBtn">📎</button>
+            <textarea id="replyMsgText" placeholder="Type your message..."></textarea>
+            <button id="sendMsgBtn" class="primaryBtn">Send</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <aside class="messagesRight">
+      <div id="refundCard" class="refundCard">
+        <h4>Refund / Return</h4>
+        <p>Status: <span id="refundStatus">—</span></p>
+        <p>Type: <span id="refundType">—</span></p>
+        <p>Reason: <span id="refundReason">—</span></p>
+        <p>Updated: <span id="refundUpdated">—</span></p>
+        <div class="refundBtns">
+          <button id="approveRefundBtn" style="background: #10b981; display: none;">Approve</button>
+          <button id="rejectRefundBtn" style="background: #ef4444; display: none;">Reject</button>
+        </div>
+      </div>
+
+      <div class="infoCard">
+        <h4>Order Info</h4>
+        <img id="orderImg" src="https://via.placeholder.com/400x300?text=Product" alt="Product">
+        <p><strong id="orderProductName">—</strong></p>
+        <p class="mutedText">Order ID: <span id="orderIdRight">—</span></p>
+        <p class="mutedText">Status: <span id="orderStatus">—</span></p>
+        <p class="mutedText">Qty: <span id="orderQty">—</span></p>
+      </div>
+
+      <div class="infoCard">
+        <h4>Buyer</h4>
+        <p id="buyerNameRight">—</p>
+        <p class="mutedText" id="buyerEmail">—</p>
+        <p class="mutedText" id="buyerPhone">—</p>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<script>
+  const conversations = [
+    {
+      id: 'c1',
+      buyer: 'Fatima R.',
+      orderId: 'ORD1001',
+      preview: 'Hi, my headset arrived damaged.',
+      time: '2025-11-13T14:12:00Z',
+      unread: true,
+      messages: [
+        { from: 'buyer', text: 'Hi, my headset arrived damaged.', time: '2025-11-13T14:12:00Z' }
+      ],
+      order: {
+        product: 'Wireless Headset',
+        image: 'https://via.placeholder.com/400x300?text=Headset',
+        status: 'Delivered',
+        qty: 1
+      },
+      refund: {
+        status: 'Pending',
+        type: 'Refund',
+        reason: 'Item damaged',
+        updated: '2025-11-13T14:15:00',
+        tracking: [
+          { step: 'Request Received', done: true },
+          { step: 'Seller Reviewing', done: false },
+          { step: 'Buyer Providing Evidence', done: false },
+          { step: 'Approved / Rejected', done: false },
+          { step: 'Completed', done: false }
+        ],
+        history: [
+          { date: '2025-11-13T14:15:00', action: 'Request Received', note: 'Buyer requested refund.' }
+        ]
+      }
+    },
+    {
+      id: 'c2',
+      buyer: 'Ammar S.',
+      orderId: 'ORD0990',
+      preview: 'When will my package be shipped?',
+      time: '2025-11-12T09:45:00Z',
+      unread: false,
+      messages: [
+        { from: 'buyer', text: 'When will my package be shipped?', time: '2025-11-12T09:45:00Z' },
+        { from: 'seller', text: 'It will ship today.', time: '2025-11-12T10:00:00Z' }
+      ],
+      order: {
+        product: 'Bluetooth Speaker',
+        image: 'https://via.placeholder.com/400x300?text=Speaker',
+        status: 'Processing',
+        qty: 2
+      }
+    }
+  ];
+
+  let activeConvoId = null;
+
+  function formatTime(iso) {
+    return new Date(iso).toLocaleString();
+  }
+
+  function renderConvoList() {
+    const listEl = document.getElementById('convoList');
+    const searchVal = document.getElementById('searchMsgInput').value.toLowerCase();
+
+    listEl.innerHTML = '';
+
+    conversations.forEach(c => {
+      if (
+        searchVal &&
+        !c.buyer.toLowerCase().includes(searchVal) &&
+        !c.orderId.toLowerCase().includes(searchVal) &&
+        !c.preview.toLowerCase().includes(searchVal)
+      ) {
+        return;
+      }
+
+      const li = document.createElement('li');
+      li.className = 'convoItem';
+      li.dataset.id = c.id;
+      li.innerHTML = `
+        <div class="convoAvatar">${c.buyer[0]}</div>
+        <div class="convoMeta">
+          <div class="convoTop">
+            <div class="convoBuyer">${c.buyer}</div>
+            <div class="mutedText">${new Date(c.time).toLocaleDateString()}</div>
+          </div>
+          <div class="convoPreview">${c.preview}</div>
+        </div>
+      `;
+      li.addEventListener('click', () => openConversation(c.id));
+      listEl.appendChild(li);
+    });
+  }
+
+  function openConversation(id) {
+    activeConvoId = id;
+    const convo = conversations.find(c => c.id === id);
+    if (!convo) return;
+
+    document.getElementById('buyerNameHeader').textContent = convo.buyer;
+    document.getElementById('orderIdHeader').textContent = convo.orderId || '—';
+
+    const chatEl = document.getElementById('chatWindow');
+    chatEl.innerHTML = '';
+    convo.messages.forEach(m => {
+      const div = document.createElement('div');
+      div.className = 'chatBubble ' + (m.from === 'buyer' ? 'buyer' : 'seller');
+      div.innerHTML = `
+        <div>${m.text}</div>
+        <div class="msgTime">${formatTime(m.time)}</div>
+      `;
+      chatEl.appendChild(div);
+    });
+    chatEl.scrollTop = chatEl.scrollHeight;
+
+    document.getElementById('orderProductName').textContent = convo.order.product;
+    document.getElementById('orderIdRight').textContent = convo.orderId;
+    document.getElementById('orderStatus').textContent = convo.order.status;
+    document.getElementById('orderQty').textContent = convo.order.qty;
+    document.getElementById('orderImg').src = convo.order.image;
+
+    document.getElementById('buyerNameRight').textContent = convo.buyer;
+    document.getElementById('buyerEmail').textContent = 'buyer@example.com';
+    document.getElementById('buyerPhone').textContent = '+92-300-0000000';
+
+    convo.unread = false;
+    renderConvoList();
+
+    document.getElementById('noConvo').style.display = 'none';
+    document.getElementById('convoPanel').style.display = 'flex';
+
+    updateRefundCard(convo);
+  }
+
+  function updateRefundCard(convo) {
+    if (!convo.refund) {
+      document.getElementById('refundCard').style.display = 'none';
+      return;
+    }
+
+    const r = convo.refund;
+    document.getElementById('refundCard').style.display = 'block';
+    document.getElementById('refundStatus').textContent = r.status || '—';
+    document.getElementById('refundType').textContent = r.type || '—';
+    document.getElementById('refundReason').textContent = r.reason || '—';
+    document.getElementById('refundUpdated').textContent = r.updated || '—';
+
+    const isPending = r.status === 'Pending';
+    document.getElementById('approveRefundBtn').style.display = isPending ? 'inline-block' : 'none';
+    document.getElementById('rejectRefundBtn').style.display = isPending ? 'inline-block' : 'none';
+  }
+
+  function sendReply() {
+    if (!activeConvoId) return;
+
+    const txt = document.getElementById('replyMsgText').value.trim();
+    if (!txt) return;
+
+    const convo = conversations.find(c => c.id === activeConvoId);
+    convo.messages.push({
+      from: 'seller',
+      text: txt,
+      time: new Date().toISOString()
+    });
+    convo.preview = txt;
+    convo.time = new Date().toISOString();
+
+    document.getElementById('replyMsgText').value = '';
+    openConversation(activeConvoId);
+  }
+
+  document.getElementById('approveRefundBtn').addEventListener('click', () => {
+    const convo = conversations.find(c => c.id === activeConvoId);
+    if (!convo || !convo.refund) return;
+
+    convo.refund.status = 'Approved';
+    convo.refund.updated = new Date().toLocaleString();
+    convo.refund.history.push({
+      date: convo.refund.updated,
+      action: 'Approved by seller',
+      note: 'Seller approved the refund.'
+    });
+    convo.refund.tracking[3].done = true;
+    updateRefundCard(convo);
+    alert('Refund Approved!');
+  });
+
+  document.getElementById('rejectRefundBtn').addEventListener('click', () => {
+    const convo = conversations.find(c => c.id === activeConvoId);
+    if (!convo || !convo.refund) return;
+
+    convo.refund.status = 'Rejected';
+    convo.refund.updated = new Date().toLocaleString();
+    convo.refund.history.push({
+      date: convo.refund.updated,
+      action: 'Rejected by seller',
+      note: 'Seller rejected the refund.'
+    });
+    convo.refund.tracking[3].done = false;
+    updateRefundCard(convo);
+    alert('Refund Rejected!');
+  });
+
+  document.getElementById('sendMsgBtn').addEventListener('click', sendReply);
+
+  document.getElementById('insertTemplateBtn').addEventListener('click', () => {
+    const sel = document.getElementById('quickReplySelect');
+    const val = sel.value;
+    if (!val) return;
+
+    const area = document.getElementById('replyMsgText');
+    area.value = area.value ? area.value + '\n' + val : val;
+    area.focus();
+  });
+
+  document.getElementById('attachFileBtn').addEventListener('click', () => {
+    document.getElementById('attachFileInput').click();
+  });
+
+  document.getElementById('attachFileInput').addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const area = document.getElementById('replyMsgText');
+      area.value += ` [Attachment: ${file.name}]`;
+    }
+  });
+
+  document.getElementById('clearSearchBtn').addEventListener('click', () => {
+    document.getElementById('searchMsgInput').value = '';
+    renderConvoList();
+  });
+
+  document.getElementById('searchMsgInput').addEventListener('input', renderConvoList);
+
+  renderConvoList();
+  if (conversations.length) {
+    openConversation(conversations[0].id);
+  }
+</script>
+
+</body>
+</html>

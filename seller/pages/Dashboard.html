@@ -747,18 +747,18 @@
     
     // Sample Orders Data
     const orders = [
-      { id: 'ORD-001', product: 'Wireless Headphones', customer: 'John Doe', amount: 89.99, status: 'Delivered', date: '2025-11-25' },
-      { id: 'ORD-002', product: 'USB-C Cable', customer: 'Jane Smith', amount: 15.99, status: 'Shipped', date: '2025-11-24' },
-      { id: 'ORD-003', product: 'Phone Case', customer: 'Mike Johnson', amount: 24.99, status: 'Pending', date: '2025-11-24' },
-      { id: 'ORD-004', product: 'Screen Protector', customer: 'Sarah Williams', amount: 9.99, status: 'Delivered', date: '2025-11-23' },
-      { id: 'ORD-005', product: 'Laptop Stand', customer: 'Tom Brown', amount: 45.99, status: 'Shipped', date: '2025-11-23' },
-      { id: 'ORD-006', product: 'Keyboard', customer: 'Lisa Anderson', amount: 79.99, status: 'Cancelled', date: '2025-11-22' },
-      { id: 'ORD-007', product: 'Mouse Pad', customer: 'David Lee', amount: 12.99, status: 'Delivered', date: '2025-11-22' },
-      { id: 'ORD-008', product: 'USB Hub', customer: 'Emma Davis', amount: 34.99, status: 'Pending', date: '2025-11-21' },
-      { id: 'ORD-009', product: 'Monitor Stand', customer: 'Chris Martin', amount: 56.99, status: 'Shipped', date: '2025-11-21' },
-      { id: 'ORD-010', product: 'Charger Cable', customer: 'Rachel Green', amount: 19.99, status: 'Delivered', date: '2025-11-20' },
-      { id: 'ORD-011', product: 'Phone Holder', customer: 'Mark Wilson', amount: 14.99, status: 'Pending', date: '2025-11-20' },
-      { id: 'ORD-012', product: 'Desk Lamp', customer: 'Anna Taylor', amount: 39.99, status: 'Delivered', date: '2025-11-19' },
+      { id: 'ORD-001', product: 'Wireless Headphones', image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=100&h=100&fit=crop', customer: 'John Doe', amount: 150, status: 'Delivered', date: '2025-11-25' },
+      { id: 'ORD-002', product: 'USB-C Cable', image: 'https://images.unsplash.com/photo-1625948515291-69613efd103f?w=100&h=100&fit=crop', customer: 'Jane Smith', amount: 200, status: 'Shipped', date: '2025-11-24' },
+      { id: 'ORD-003', product: 'Phone Case', image: 'https://images.unsplash.com/photo-1599286513066-07e9c86e8ce8?w=100&h=100&fit=crop', customer: 'Mike Johnson', amount: 120, status: 'Pending', date: '2025-11-24' },
+      { id: 'ORD-004', product: 'Screen Protector', image: 'https://images.unsplash.com/photo-1606933248051-5ce98bacaf76?w=100&h=100&fit=crop', customer: 'Sarah Williams', amount: 100, status: 'Delivered', date: '2025-11-23' },
+      { id: 'ORD-005', product: 'Laptop Stand', image: 'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=100&h=100&fit=crop', customer: 'Tom Brown', amount: 350, status: 'Shipped', date: '2025-11-23' },
+      { id: 'ORD-006', product: 'Keyboard', image: 'https://images.unsplash.com/photo-1587829191301-26382e6b0b37?w=100&h=100&fit=crop', customer: 'Lisa Anderson', amount: 400, status: 'Cancelled', date: '2025-11-22' },
+      { id: 'ORD-007', product: 'Mouse Pad', image: 'https://images.unsplash.com/photo-1527814050087-3793815479db?w=100&h=100&fit=crop', customer: 'David Lee', amount: 80, status: 'Delivered', date: '2025-11-22' },
+      { id: 'ORD-008', product: 'USB Hub', image: 'https://images.unsplash.com/photo-1625948515291-69613efd103f?w=100&h=100&fit=crop', customer: 'Emma Davis', amount: 180, status: 'Pending', date: '2025-11-21' },
+      { id: 'ORD-009', product: 'Monitor Stand', image: 'https://images.unsplash.com/photo-1559056199-641a0ac8b3f4?w=100&h=100&fit=crop', customer: 'Chris Martin', amount: 560, status: 'Shipped', date: '2025-11-21' },
+      { id: 'ORD-010', product: 'Charger Cable', image: 'https://images.unsplash.com/photo-1625948515291-69613efd103f?w=100&h=100&fit=crop', customer: 'Rachel Green', amount: 140, status: 'Delivered', date: '2025-11-20' },
+      { id: 'ORD-011', product: 'Phone Holder', image: 'https://images.unsplash.com/photo-1590736969955-71cc94901144?w=100&h=100&fit=crop', customer: 'Mark Wilson', amount: 110, status: 'Pending', date: '2025-11-20' },
+      { id: 'ORD-012', product: 'Desk Lamp', image: 'https://images.unsplash.com/photo-1565636192335-14c46fa1120d?w=100&h=100&fit=crop', customer: 'Anna Taylor', amount: 220, status: 'Delivered', date: '2025-11-19' },
     ];
 
     // Sample Notifications Data
@@ -852,12 +852,12 @@
             <td><span class="order-id">${order.id}</span></td>
             <td>
               <div class="product-info">
-                <div class="product-img">📦</div>
+                <img src="${order.image}" alt="${order.product}" class="product-img" style="width: 50px; height: 50px; border-radius: 6px; object-fit: cover;">
                 <div class="product-name">${order.product}</div>
               </div>
             </td>
             <td>${order.customer}</td>
-            <td>$${order.amount.toFixed(2)}</td>
+            <td>${order.amount.toFixed(2)}</td>
             <td><span class="status-badge ${statusClass}">${order.status}</span></td>
             <td>${order.date}</td>
           `;

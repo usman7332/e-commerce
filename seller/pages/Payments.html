@@ -18,11 +18,23 @@
         background-color: #f5f5f5;
       }
 
+      /* Hide duplicate sidebar/header when loaded in main dashboard */
+      .main-content .sidebar,
+      .main-content .overlay,
+      .main-content header {
+        display: none !important;
+      }
+
+      .main-content .main-content {
+        padding: 0;
+        margin: 0;
+      }
+
 
       /* Content */
       .main-content {
         padding: 20px;
-        margin-top: 20px;
+        margin-top: 50px;
       }
 
       .page {
@@ -1124,31 +1136,31 @@
         <div class="metrics-grid">
           <div class="metric-card" style="border-left-color: #28a745;">
             <p>Total Earnings</p>
-            <div class="metric-value" data-target="12450">$0</div>
+            <div class="metric-value" data-target="12450">0</div>
             <div class="metric-change"><span class="material-symbols-rounded" style="font-size:16px">trending_up</span> Lifetime earnings</div>
           </div>
 
           <div class="metric-card" style="border-left-color: #0066c0;">
             <p>Withdrawable Balance</p>
-            <div class="metric-value" data-target="5320">$0</div>
+            <div class="metric-value" data-target="5320">0</div>
             <div class="metric-change"><span class="material-symbols-rounded" style="font-size:16px">account_balance_wallet</span> Ready to withdraw</div>
           </div>
 
           <div class="metric-card" style="border-left-color: #ffc107;">
             <p>Pending Payouts</p>
-            <div class="metric-value" data-target="2150">$0</div>
+            <div class="metric-value" data-target="2150">0</div>
             <div class="metric-change"><span class="material-symbols-rounded" style="font-size:16px">schedule</span> In 5-7 days</div>
           </div>
 
           <div class="metric-card" style="border-left-color: #6f42c1;">
             <p>Monthly Earnings</p>
-            <div class="metric-value" data-target="3280">$0</div>
+            <div class="metric-value" data-target="3280">0</div>
             <div class="metric-change"><span class="material-symbols-rounded" style="font-size:16px">calendar_month</span> This month</div>
           </div>
 
           <div class="metric-card" style="border-left-color: #dc3545;">
             <p>Commission Charged</p>
-            <div class="metric-value" data-target="890">-$0</div>
+            <div class="metric-value" data-target="890">0</div>
             <div class="metric-change"><span class="material-symbols-rounded" style="font-size:16px">percent</span> This month</div>
           </div>
         </div>
@@ -1388,12 +1400,42 @@
         let currentTransaction = null;
 
         // ===== INITIALIZATION =====
-        document.addEventListener('DOMContentLoaded', function() {
+        function initializePaymentPage() {
             setupSidebar();
             renderTransactions();
-            initializeChart();
             animateMetrics();
-        });
+            
+            // Ensure Chart.js is loaded before initializing chart
+            if (typeof Chart !== 'undefined') {
+                initializeChart();
+            } else {
+                // If Chart.js is not loaded, load it
+                loadChartLibrary();
+            }
+        }
+
+        // Load Chart.js dynamically if not already loaded
+        function loadChartLibrary() {
+            const script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/chart.js';
+            script.onload = function() {
+                // Give it a moment to initialize, then create chart
+                setTimeout(initializeChart, 100);
+            };
+            script.onerror = function() {
+                console.error('Failed to load Chart.js library');
+            };
+            document.head.appendChild(script);
+        }
+
+        // Check if DOM is already loaded (for dynamic loading)
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializePaymentPage);
+        } else {
+            // DOM already loaded, initialize immediately
+            // Use setTimeout to ensure DOM is fully ready
+            setTimeout(initializePaymentPage, 100);
+        }
 
         // ===== ANIMATE METRIC NUMBERS =====
         function animateMetrics() {
@@ -1402,6 +1444,7 @@
                 const target = parseInt(card.getAttribute('data-target'));
                 const increment = Math.ceil(target / 30);
                 let current = 0;
+                const isNegative = card.textContent.includes('-');
 
                 const timer = setInterval(() => {
                     current += increment;
@@ -1409,8 +1452,8 @@
                         current = target;
                         clearInterval(timer);
                     }
-                    const text = card.textContent.includes('-') ? '-$' : '$';
-                    card.textContent = text + current.toLocaleString();
+                    const sign = isNegative ? '-' : '';
+                    card.textContent = sign + current.toLocaleString();
                 }, 30);
             });
         }
@@ -1421,6 +1464,12 @@
             const toggleBtn = document.getElementById('toggleBtn');
             const overlay = document.getElementById('overlay');
             const closeBtn = document.getElementById('closeBtn');
+
+            // Only set up if these elements exist in this page
+            if (!sidebar || !toggleBtn || !overlay || !closeBtn) {
+                console.log('Sidebar elements not found - page is loaded dynamically');
+                return;
+            }
 
             toggleBtn.addEventListener('click', function() {
                 sidebar.classList.add('active');
@@ -1440,7 +1489,23 @@
 
         // ===== CHART INITIALIZATION =====
         function initializeChart() {
-            const ctx = document.getElementById('earningsChart').getContext('2d');
+            const chartElement = document.getElementById('earningsChart');
+            if (!chartElement) {
+                console.warn('Chart element not found');
+                return;
+            }
+
+            const ctx = chartElement.getContext('2d');
+            if (!ctx) {
+                console.warn('Canvas context not available');
+                return;
+            }
+
+            // Check if Chart library is available
+            if (typeof Chart === 'undefined') {
+                console.error('Chart.js library not loaded');
+                return;
+            }
 
             const data = {
                 labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
@@ -1462,30 +1527,35 @@
                 ]
             };
 
-            new Chart(ctx, {
-                type: 'line',
-                data: data,
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            display: true,
-                            position: 'top'
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            ticks: {
-                                callback: function(value) {
-                                    return '$' + value.toLocaleString();
+            try {
+                new Chart(ctx, {
+                    type: 'line',
+                    data: data,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: true,
+                                position: 'top'
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    callback: function(value) {
+                                        return '$' + value.toLocaleString();
+                                    }
                                 }
                             }
                         }
                     }
-                }
-            });
+                });
+                console.log('Chart initialized successfully');
+            } catch (e) {
+                console.error('Error initializing chart:', e);
+            }
         }
 
         // ===== FILTER TRANSACTIONS =====
@@ -1533,14 +1603,14 @@
                 }[transaction.status] || 'status-received';
 
                 const amountClass = transaction.amount >= 0 ? 'amount-positive' : 'amount-negative';
-                const amountSign = transaction.amount >= 0 ? '+' : '';
+                const amountSign = transaction.amount >= 0 ? '+' : '-';
 
                 return `
                     <tr>
                         <td><strong>${transaction.id}</strong></td>
                         <td>${new Date(transaction.date).toLocaleDateString()}</td>
                         <td>${transaction.type}</td>
-                        <td class="${amountClass}">${amountSign}$${Math.abs(transaction.amount).toFixed(2)}</td>
+                        <td class="${amountClass}">${amountSign}${Math.abs(transaction.amount).toFixed(2)}</td>
                         <td><span class="status-badge ${statusBadgeClass}">${transaction.status.charAt(0).toUpperCase() + transaction.status.slice(1)}</span></td>
                         <td><a class="action-btn" onclick="viewTransactionDetails('${transaction.id}')">View</a></td>
                     </tr>
@@ -1660,7 +1730,7 @@
                     <div>
                         <p style="color: #999; font-size: 12px; margin-bottom: 5px;">Amount</p>
                         <p style="font-weight: 600; font-size: 16px; color: ${currentTransaction.amount >= 0 ? '#10b981' : '#ef4444'};">
-                            ${currentTransaction.amount >= 0 ? '+' : ''}$${Math.abs(currentTransaction.amount).toFixed(2)}
+                            ${currentTransaction.amount >= 0 ? '+' : '-'}${Math.abs(currentTransaction.amount).toFixed(2)}
                         </p>
                     </div>
                 </div>
